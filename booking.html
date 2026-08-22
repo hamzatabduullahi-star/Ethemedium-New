@@ -395,12 +395,6 @@
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
         }
         .booking-btn.whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4); }
-        .booking-btn.telegram {
-            background: #0088cc;
-            color: white;
-            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.3);
-        }
-        .booking-btn.telegram:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(0, 136, 204, 0.4); }
         .booking-btn i { font-size: 1.5rem; }
 
         .booking-note {
@@ -561,7 +555,7 @@
             <div class="booking-emoji">🛐 🧿 🔮 ☮️ 🌅</div>
         </div>
 
-        <!-- ===== CRYSTAL CART ALERT (Linked from crystal.html) ===== -->
+        <!-- ===== CRYSTAL CART ALERT ===== -->
         <div id="cartAlert" class="cart-alert" style="display: none;">
             <i class="fas fa-shopping-bag"></i>
             <p>📦 <strong>Crystals in your cart!</strong> Your booking will include both your readings and crystals. ❤️</p>
@@ -708,9 +702,6 @@
                 <button class="booking-btn whatsapp" onclick="bookNow('whatsapp')">
                     <i class="fab fa-whatsapp"></i> Book via WhatsApp
                 </button>
-                <button class="booking-btn telegram" onclick="bookNow('telegram')">
-                    <i class="fab fa-telegram-plane"></i> Book via Telegram
-                </button>
                 <div class="booking-note"><i class="fas fa-lock"></i> Your information is private and confidential, love ❤️</div>
                 <div class="booking-note"><i class="fas fa-clock"></i> You'll receive a confirmation within 24 hours</div>
             </div>
@@ -749,7 +740,6 @@
         <div class="footer-contact">
             <h4>Contact</h4>
             <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
             <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </div>
@@ -814,7 +804,6 @@
     let selectedPayment = null;
 
     const WHATSAPP_NUMBER = '13528287004';
-    const TELEGRAM_USERNAME = 'ethe_medium';
 
     // ============================================
     // DOM REFS
@@ -956,7 +945,7 @@
     }
 
     // ============================================
-    // BOOK NOW — Linked with Crystals
+    // BOOK NOW — WhatsApp Only
     // ============================================
 
     function bookNow(platform) {
@@ -995,7 +984,7 @@
         const questions = questionsInput ? questionsInput.value.trim() : '';
         const finalQuestions = questions || 'No specific questions — read what Spirit brings through';
 
-        // ===== CRYSTAL SECTION (Linked from crystal.html) =====
+        // ===== CRYSTAL SECTION =====
         let crystalSection = '';
         let crystalTotal = 0;
         if (crystalCart && crystalCart.length > 0) {
@@ -1055,11 +1044,9 @@ ${paymentInfo}
         let url = '';
         if (platform === 'whatsapp') {
             url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
-        } else if (platform === 'telegram') {
-            url = `https://t.me/${TELEGRAM_USERNAME}?text=${encoded}`;
         }
         window.open(url, '_blank');
-        showToast(`✨ Opening ${platform.charAt(0).toUpperCase() + platform.slice(1)}... Sending love! ❤️`);
+        showToast(`✨ Opening WhatsApp... Sending love! ❤️`);
 
         sessionStorage.removeItem('crystalCart');
         sessionStorage.removeItem('cartMessage');
@@ -1078,7 +1065,7 @@ ${paymentInfo}
     }
 
     // ============================================
-    // LOAD CRYSTAL CART (Linked from crystal.html)
+    // LOAD CRYSTAL CART
     // ============================================
 
     function loadCrystalCart() {
@@ -1119,6 +1106,7 @@ ${paymentInfo}
         console.log('🔮 Spiritual Soul Booking Page is ready, love! ❤️🛐🧿🔮☮️🌅');
         console.log('💳 9 Payment Methods Available');
         console.log('📦 Crystal cart linked from crystal.html');
+        console.log('📱 WhatsApp only');
     }
 
     if (document.readyState === 'loading') {
