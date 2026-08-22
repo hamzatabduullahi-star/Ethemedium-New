@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🔮 Spiritual Soul — Book Your Reading</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); font-family: 'Inter', sans-serif; min-height: 100vh; }
+        
+        :root {
+            --primary: #C97B3A;
+            --primary-light: #E0955A;
+            --primary-dark: #A8622A;
+            --gold: #D4A84C;
+            --gold-light: #F0DC8A;
+            --text-dark: #3D2A1A;
+            --text-muted: #8A7A6A;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.12);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.2);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            z-index: 1000;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+        .nav-logo .logo-icon { font-size: 1.6rem; }
+        .nav-logo .logo-text span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .currency-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(212, 168, 76, 0.2);
+        }
+        .currency-selector select {
+            border: none;
+            background: transparent;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            padding: 2px 0;
+        }
+        
+        .booking-page { padding: 90px 20px 40px; min-height: 100vh; }
+        .booking-container {
+            max-width: 820px;
+            margin: 0 auto;
+            background: rgba(255, 248, 245, 0.92);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 20px 60px rgba(201, 123, 58, 0.12);
+            border: 1px solid rgba(212, 168, 76, 0.15);
+        }
+        .booking-header {
+            text-align: center;
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 2px dashed rgba(212, 168, 76, 0.25);
+        }
+        .booking-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .booking-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+        }
+        .booking-header p { color: var(--text-muted); margin-top: 4px; }
+        .booking-emoji { font-size: 1.6rem; letter-spacing: 8px; margin-top: 6px; }
+
+        .cart-alert {
+            background: linear-gradient(135deg, #FFF9F0, #FFF5E6);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .cart-alert i { font-size: 1.5rem; color: var(--gold); }
+        .cart-alert p { color: var(--text-dark); font-size: 0.9rem; margin: 0; }
+        .cart-alert strong { color: var(--primary); }
+
+        .booking-step {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+        }
+        .booking-step:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .step-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .step-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+            background: var(--primary);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .step-label h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .step-required { font-size: 0.7rem; color: #E8798A; font-weight: 600; margin-left: auto; }
+        .step-optional { font-size: 0.7rem; color: var(--text-muted); font-weight: 400; margin-left: auto; }
+
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 12px;
+        }
+        .reading-card {
+            background: white;
+            border-radius: 14px;
+            padding: 14px 12px;
+            border: 2px solid #F0E0E0;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+        .reading-card:hover { border-color: #D4A5A5; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 165, 165, 0.2); }
+        .reading-card.has-items { border-color: var(--primary); background: #FAF5F5; box-shadow: 0 0 0 2px rgba(201, 123, 58, 0.1); }
+        .reading-card .icon { font-size: 1.8rem; display: block; margin-bottom: 4px; }
+        .reading-card h4 { font-size: 0.85rem; color: var(--text-dark); font-weight: 600; }
+        .reading-card .desc { font-size: 0.6rem; color: var(--text-muted); display: block; margin: 2px 0 4px; line-height: 1.3; }
+        .reading-card .price { font-weight: 700; color: var(--primary); font-size: 0.85rem; display: block; }
+        .reading-qty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .reading-qty button {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid #E0D0D0;
+            background: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .reading-qty button:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .reading-qty span { font-weight: 600; font-size: 1rem; min-width: 24px; text-align: center; color: var(--text-dark); }
+        .reading-qty .qty-zero { color: #ccc; }
+
+        .duration-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .duration-btn {
+            background: white;
+            border: 2px solid #F0E0E0;
+            border-radius: 14px;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .duration-btn:hover { border-color: #D4A5A5; transform: translateY(-2px); }
+        .duration-btn.active { border-color: var(--primary); background: #FAF5F5; box-shadow: 0 0 0 3px rgba(201, 123, 58, 0.1); }
+        .duration-btn .time { font-weight: 700; font-size: 1.1rem; color: var(--text-dark); }
+        .duration-btn .label { font-size: 0.7rem; color: var(--text-muted); }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .contact-form .full-width { grid-column: 1 / -1; }
+        .contact-form label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .contact-form label .required { color: #E8798A; }
+        .contact-form input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #F0E0E0;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: white;
+        }
+        .contact-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(201, 123, 58, 0.08);
+        }
+
+        .questions-area {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #F0E0E0;
+            border-radius: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background: white;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        .questions-area:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(201, 123, 58, 0.08);
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .payment-card {
+            background: white;
+            border: 2px solid #F0E0E0;
+            border-radius: 12px;
+            padding: 14px 10px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .payment-card:hover { border-color: #D4A5A5; transform: translateY(-2px); box-shadow: 0 4px 15px rgba(212, 165, 165, 0.08); }
+        .payment-card.selected { border-color: var(--primary); background: #FAF5F5; box-shadow: 0 0 0 3px rgba(201, 123, 58, 0.1); }
+        .payment-card .icon { font-size: 2rem; display: block; }
+        .payment-card h4 { font-size: 0.85rem; color: var(--text-dark); margin-top: 4px; }
+
+        .selected-summary {
+            background: #FAF5F5;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-top: 10px;
+            border: 1px solid #F0E0E0;
+            display: none;
+        }
+        .selected-summary.visible { display: block; }
+        .selected-summary h4 {
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .selected-summary .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 3px 0;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            border-bottom: 1px dashed rgba(212, 168, 76, 0.2);
+        }
+        .selected-summary .summary-item:last-child { border-bottom: none; }
+        .selected-summary .summary-total {
+            font-weight: 700;
+            color: var(--primary);
+            padding-top: 6px;
+            margin-top: 6px;
+            border-top: 2px solid #E0D0D0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+        }
+
+        .booking-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .booking-btn {
+            padding: 16px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-family: 'Inter', sans-serif;
+        }
+        .booking-btn.whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+        }
+        .booking-btn.whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4); }
+        .booking-btn.telegram {
+            background: #0088cc;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.3);
+        }
+        .booking-btn.telegram:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(0, 136, 204, 0.4); }
+        .booking-btn i { font-size: 1.5rem; }
+
+        .booking-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 4px 0;
+        }
+        .booking-note i { margin-right: 6px; }
+
+        .booking-footer {
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 2px dashed rgba(212, 168, 76, 0.25);
+        }
+        .booking-footer .booking-quote {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.85);
+            padding: 40px 24px 20px;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.7; }
+        .footer-links h4, .footer-contact h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+        .footer-links a, .footer-contact a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            padding: 4px 0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover, .footer-contact a:hover { color: white; }
+        .footer-socials { display: flex; gap: 14px; margin-top: 12px; }
+        .footer-socials a { color: rgba(255,255,255,0.6); font-size: 1.2rem; transition: var(--transition); }
+        .footer-socials a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2D1F1F;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 999;
+            pointer-events: none;
+            text-align: center;
+            max-width: 90%;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            }
+            .nav-links.show { display: flex; }
+            .hamburger { display: flex; }
+            .booking-container { padding: 20px 16px; }
+            .booking-header h1 { font-size: 1.5rem; }
+            .readings-grid { grid-template-columns: 1fr 1fr; }
+            .duration-selector { grid-template-columns: 1fr 1fr 1fr; }
+            .footer-container { grid-template-columns: 1fr; gap: 20px; }
+            .cart-alert { flex-direction: column; text-align: center; }
+            .contact-form { grid-template-columns: 1fr; }
+            .payment-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+        }
+        @media (max-width: 480px) {
+            .readings-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .reading-card { padding: 10px 8px; }
+            .reading-card .icon { font-size: 1.3rem; }
+            .booking-btn { font-size: 0.9rem; padding: 14px 16px; }
+            .payment-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+            .payment-card { padding: 10px 6px; }
+            .payment-card .icon { font-size: 1.5rem; }
+            .payment-card h4 { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="toast" class="toast">✨ Updated, love!</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🔮</span>
+            <span class="logo-text">Spiritual<span>Soul</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="readings.html"><i class="fas fa-hand-sparkles"></i> Readings</a></li>
+            <li><a href="about.html"><i class="fas fa-star"></i> About</a></li>
+            <li><a href="crystal.html"><i class="fas fa-gem"></i> Crystals</a></li>
+            <li><a href="testimonial.html"><i class="fas fa-heart"></i> Testimonials</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== BOOKING PAGE ===== -->
+<div class="booking-page">
+    <div class="booking-container">
+
+        <!-- ===== HEADER ===== -->
+        <div class="booking-header">
+            <span class="booking-badge">🔮 Book Your Reading</span>
+            <h1>Choose Your Readings, Love ❤️</h1>
+            <p id="bookingSubtitle">Select multiple readings! Add as many as you want.</p>
+            <div class="booking-emoji">🛐 🧿 🔮 ☮️ 🌅</div>
+        </div>
+
+        <!-- ===== CRYSTAL CART ALERT (Linked from crystal.html) ===== -->
+        <div id="cartAlert" class="cart-alert" style="display: none;">
+            <i class="fas fa-shopping-bag"></i>
+            <p>📦 <strong>Crystals in your cart!</strong> Your booking will include both your readings and crystals. ❤️</p>
+        </div>
+
+        <!-- ===== STEP 1: READING TYPE ===== -->
+        <div class="booking-step">
+            <div class="step-label">
+                <span class="step-num">01</span>
+                <h3>Choose Your Readings</h3>
+                <span class="step-required">Select one or more</span>
+            </div>
+            <div class="readings-grid" id="readingsGrid"></div>
+            <div class="selected-summary" id="selectedSummary">
+                <h4>📋 Your Selected Readings:</h4>
+                <div id="summaryList"></div>
+                <div class="summary-total">
+                    <span>Reading Total:</span>
+                    <span id="readingTotal">$0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== STEP 2: DURATION ===== -->
+        <div class="booking-step">
+            <div class="step-label">
+                <span class="step-num">02</span>
+                <h3>Select Duration</h3>
+                <span class="step-required">*Required</span>
+            </div>
+            <div class="duration-selector" id="durationSelector"></div>
+        </div>
+
+        <!-- ===== STEP 3: YOUR DETAILS ===== -->
+        <div class="booking-step">
+            <div class="step-label">
+                <span class="step-num">03</span>
+                <h3>Your Details</h3>
+                <span class="step-required">*Required</span>
+            </div>
+            <div class="contact-form">
+                <div class="full-width">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" id="clientName" placeholder="e.g. Sarah Johnson" required />
+                </div>
+                <div>
+                    <label>Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="clientPhone" placeholder="e.g. +1 352 828 7004" required />
+                </div>
+                <div>
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" id="clientEmail" placeholder="e.g. sarah@email.com" required />
+                </div>
+                <div class="full-width">
+                    <label>Preferred Date & Time <span class="optional">(Optional)</span></label>
+                    <input type="text" id="clientDateTime" placeholder="e.g. Monday 25th, 3pm EST" />
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== STEP 4: QUESTIONS ===== -->
+        <div class="booking-step">
+            <div class="step-label">
+                <span class="step-num">04</span>
+                <h3>Your Questions</h3>
+                <span class="step-optional">Optional</span>
+            </div>
+            <textarea id="questionsInput" class="questions-area" placeholder="💭 Tell me what's on your heart, love... Any specific questions? I'll read it for you ❤️" rows="4"></textarea>
+        </div>
+
+        <!-- ===== STEP 5: PAYMENT METHOD ===== -->
+        <div class="booking-step">
+            <div class="step-label">
+                <span class="step-num">💳</span>
+                <h3>Payment Method</h3>
+                <span class="step-optional">Choose your payment option</span>
+            </div>
+
+            <div class="payment-grid">
+                <!-- PayPal -->
+                <div class="payment-card" onclick="selectPayment('paypal')" id="paypal-card">
+                    <span class="icon">💳</span>
+                    <h4>PayPal</h4>
+                </div>
+                <!-- CashApp -->
+                <div class="payment-card" onclick="selectPayment('cashapp')" id="cashapp-card">
+                    <span class="icon">💰</span>
+                    <h4>CashApp</h4>
+                </div>
+                <!-- Venmo -->
+                <div class="payment-card" onclick="selectPayment('venmo')" id="venmo-card">
+                    <span class="icon">🏦</span>
+                    <h4>Venmo</h4>
+                </div>
+                <!-- Zelle -->
+                <div class="payment-card" onclick="selectPayment('zelle')" id="zelle-card">
+                    <span class="icon">📱</span>
+                    <h4>Zelle</h4>
+                </div>
+                <!-- Apple Pay -->
+                <div class="payment-card" onclick="selectPayment('applepay')" id="applepay-card">
+                    <span class="icon">📲</span>
+                    <h4>Apple Pay</h4>
+                </div>
+                <!-- Apple Gift Card -->
+                <div class="payment-card" onclick="selectPayment('applegift')" id="applegift-card">
+                    <span class="icon">🎁</span>
+                    <h4>Apple Gift Card</h4>
+                </div>
+                <!-- eTransfer -->
+                <div class="payment-card" onclick="selectPayment('etransfer')" id="etransfer-card">
+                    <span class="icon">💸</span>
+                    <h4>eTransfer</h4>
+                </div>
+                <!-- Bank Transfer -->
+                <div class="payment-card" onclick="selectPayment('bank')" id="bank-card">
+                    <span class="icon">🏛️</span>
+                    <h4>Bank Transfer</h4>
+                </div>
+                <!-- Bitcoin -->
+                <div class="payment-card" onclick="selectPayment('bitcoin')" id="bitcoin-card">
+                    <span class="icon">₿</span>
+                    <h4>Bitcoin</h4>
+                </div>
+            </div>
+
+            <div id="selectedPayment" style="margin-top: 12px; padding: 10px 14px; background: #FAF5F5; border-radius: 10px; border: 1px solid #F0E0E0; display: none; text-align: center;">
+                <p style="font-size: 0.85rem; color: var(--text-dark); margin: 0;">
+                    <i class="fas fa-check-circle" style="color: #25D366;"></i> 
+                    Selected: <strong id="paymentMethodDisplay">PayPal</strong>
+                    <span id="paymentDetailDisplay" style="display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== STEP 6: BOOK NOW ===== -->
+        <div class="booking-step">
+            <div class="step-label">
+                <span class="step-num">06</span>
+                <h3>Book Your Session</h3>
+                <span class="step-required">Ready to book?</span>
+            </div>
+            <div class="booking-actions">
+                <button class="booking-btn whatsapp" onclick="bookNow('whatsapp')">
+                    <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                </button>
+                <button class="booking-btn telegram" onclick="bookNow('telegram')">
+                    <i class="fab fa-telegram-plane"></i> Book via Telegram
+                </button>
+                <div class="booking-note"><i class="fas fa-lock"></i> Your information is private and confidential, love ❤️</div>
+                <div class="booking-note"><i class="fas fa-clock"></i> You'll receive a confirmation within 24 hours</div>
+            </div>
+        </div>
+
+        <div class="booking-footer">
+            <div style="font-size: 1.4rem; letter-spacing: 6px;">🛐 🧿 🔮 ☮️ 🌅</div>
+            <p class="booking-quote">"Sending positive energy to you if you need healing, love ❤️"</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <span class="footer-logo">🔮 Spiritual Soul</span>
+            <p>Sending positive energy to you if you need healing, love ❤️</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="readings.html">Readings</a>
+            <a href="about.html">About</a>
+            <a href="crystal.html">Crystals</a>
+            <a href="testimonial.html">Testimonials</a>
+            <a href="booking.html">Book Now</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Spiritual Soul — Made with love ❤️🛐🧿🔮☮️🌅</p>
+    </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- ===== JAVASCRIPT ===== -->
+<!-- ============================================================ -->
+<script>
+    // ============================================
+    // DATA — 12 Reading Types
+    // ============================================
+
+    const READINGS = [
+        { id: 'love', icon: '💖', name: 'Love Reading', desc: 'Soulmate, twin flame, relationship blocks', basePrice: 45 },
+        { id: 'general', icon: '🔮', name: 'General Reading', desc: 'Whatever Spirit wants you to know', basePrice: 40 },
+        { id: 'relationship', icon: '💑', name: 'Relationship Reading', desc: 'Deep dive into current partnership', basePrice: 55 },
+        { id: 'aura', icon: '🌈', name: 'Aura Reading', desc: 'See your energy colors & chakras', basePrice: 60 },
+        { id: 'career', icon: '💼', name: 'Career Reading', desc: 'Career path, promotions, purpose', basePrice: 55 },
+        { id: 'job', icon: '🏢', name: 'Job Reading', desc: 'Job search, interviews, next steps', basePrice: 50 },
+        { id: 'finance', icon: '💰', name: 'Finance Reading', desc: 'Money flow, abundance, investments', basePrice: 55 },
+        { id: 'future', icon: '🌅', name: 'Future Reading', desc: "What's coming in 3-6 months", basePrice: 60 },
+        { id: 'healing', icon: '🕊️', name: 'Healing Reading', desc: 'Depression, anxiety, inner peace', basePrice: 70 },
+        { id: 'intuitive', icon: '✨', name: 'Intuitive Guidance', desc: 'Life guidance, decision making, clarity', basePrice: 50 },
+        { id: 'protection', icon: '🛡️', name: 'Protection Reading', desc: 'Energy protection, spiritual safety', basePrice: 65 },
+        { id: 'spiritual', icon: '🙏', name: 'Spiritual Reading', desc: 'Spiritual awakening, purpose, guides', basePrice: 60 }
+    ];
+
+    const DURATIONS = [
+        { minutes: 15, label: 'Quick', priceMultiplier: 0.6 },
+        { minutes: 30, label: 'Deep', priceMultiplier: 1.0 },
+        { minutes: 60, label: 'Full', priceMultiplier: 1.6 }
+    ];
+
+    // ============================================
+    // PAYMENT DETAILS
+    // ============================================
+
+    const paymentDetails = {
+        paypal: { name: 'PayPal', detail: 'paypal.me/ethemedium', icon: '💳' },
+        cashapp: { name: 'CashApp', detail: '$Ethemedium', icon: '💰' },
+        venmo: { name: 'Venmo', detail: '@Ethemedium', icon: '🏦' },
+        zelle: { name: 'Zelle', detail: 'ethemedium@gmail.com', icon: '📱' },
+        applepay: { name: 'Apple Pay', detail: 'Available on request', icon: '📲' },
+        applegift: { name: 'Apple Gift Card', detail: 'Send gift card code via WhatsApp', icon: '🎁' },
+        etransfer: { name: 'eTransfer', detail: 'Interac e-Transfer available', icon: '💸' },
+        bank: { name: 'Bank Transfer', detail: 'Details provided upon booking', icon: '🏛️' },
+        bitcoin: { name: 'Bitcoin', detail: 'BTC Wallet: bc1... (provided on request)', icon: '₿' }
+    };
+
+    // ============================================
+    // STATE
+    // ============================================
+
+    let selectedReadings = {};
+    let selectedDuration = 30;
+    let crystalCart = [];
+    let crystalCartMessage = '';
+    let selectedPayment = null;
+
+    const WHATSAPP_NUMBER = '13528287004';
+    const TELEGRAM_USERNAME = 'ethe_medium';
+
+    // ============================================
+    // DOM REFS
+    // ============================================
+
+    const readingsGrid = document.getElementById('readingsGrid');
+    const durationSelector = document.getElementById('durationSelector');
+    const questionsInput = document.getElementById('questionsInput');
+    const toast = document.getElementById('toast');
+    const cartAlert = document.getElementById('cartAlert');
+    const bookingSubtitle = document.getElementById('bookingSubtitle');
+    const selectedSummary = document.getElementById('selectedSummary');
+    const summaryList = document.getElementById('summaryList');
+    const readingTotal = document.getElementById('readingTotal');
+    const clientName = document.getElementById('clientName');
+    const clientPhone = document.getElementById('clientPhone');
+    const clientEmail = document.getElementById('clientEmail');
+    const clientDateTime = document.getElementById('clientDateTime');
+
+    // ============================================
+    // RENDER FUNCTIONS
+    // ============================================
+
+    function renderReadings() {
+        readingsGrid.innerHTML = READINGS.map(r => {
+            const qty = selectedReadings[r.id] || 0;
+            const hasItems = qty > 0;
+            return `
+                <div class="reading-card ${hasItems ? 'has-items' : ''}">
+                    <span class="icon">${r.icon}</span>
+                    <h4>${r.name}</h4>
+                    <span class="desc">${r.desc}</span>
+                    <span class="price">$${r.basePrice}</span>
+                    <div class="reading-qty">
+                        <button onclick="updateReadingQty('${r.id}', -1)">−</button>
+                        <span class="${qty === 0 ? 'qty-zero' : ''}">${qty}</span>
+                        <button onclick="updateReadingQty('${r.id}', 1)">+</button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        updateSummary();
+    }
+
+    function renderDurations() {
+        durationSelector.innerHTML = DURATIONS.map(d => {
+            const active = selectedDuration === d.minutes ? 'active' : '';
+            return `
+                <div class="duration-btn ${active}" onclick="selectDuration(${d.minutes})">
+                    <div class="time">${d.minutes} min</div>
+                    <div class="label">${d.label}</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function updateSummary() {
+        const items = [];
+        let total = 0;
+        READINGS.forEach(r => {
+            const qty = selectedReadings[r.id] || 0;
+            if (qty > 0) {
+                const price = r.basePrice * qty;
+                total += price;
+                items.push({ name: r.name, icon: r.icon, qty, price: r.basePrice, total: price });
+            }
+        });
+        if (items.length === 0) {
+            selectedSummary.classList.remove('visible');
+            return;
+        }
+        selectedSummary.classList.add('visible');
+        summaryList.innerHTML = items.map(item => `
+            <div class="summary-item">
+                <span>${item.icon} ${item.name} x${item.qty}</span>
+                <span>$${item.total.toFixed(2)}</span>
+            </div>
+        `).join('');
+        readingTotal.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // ============================================
+    // ACTIONS
+    // ============================================
+
+    function updateReadingQty(id, change) {
+        const current = selectedReadings[id] || 0;
+        const newQty = Math.max(0, current + change);
+        if (newQty === 0) { delete selectedReadings[id]; } else { selectedReadings[id] = newQty; }
+        renderReadings();
+        showToast(newQty > 0 ? `✨ Updated ${READINGS.find(r => r.id === id).name}` : `❌ Removed ${READINGS.find(r => r.id === id).name}`);
+    }
+
+    function selectDuration(minutes) {
+        selectedDuration = minutes;
+        renderDurations();
+    }
+
+    // ============================================
+    // PAYMENT SELECTION
+    // ============================================
+
+    function selectPayment(method) {
+        selectedPayment = method;
+
+        document.querySelectorAll('.payment-card').forEach(card => {
+            card.classList.remove('selected');
+            card.style.borderColor = '#F0E0E0';
+            card.style.background = 'white';
+            card.style.boxShadow = 'none';
+        });
+
+        const card = document.getElementById(method + '-card');
+        if (card) {
+            card.classList.add('selected');
+            card.style.borderColor = '#C97B3A';
+            card.style.background = '#FAF5F5';
+            card.style.boxShadow = '0 0 0 3px rgba(201,123,58,0.1)';
+        }
+
+        const display = document.getElementById('paymentMethodDisplay');
+        const detailDisplay = document.getElementById('paymentDetailDisplay');
+        const container = document.getElementById('selectedPayment');
+
+        if (display && container) {
+            const info = paymentDetails[method];
+            display.textContent = info.name;
+            if (detailDisplay) {
+                detailDisplay.textContent = info.icon + ' ' + info.detail;
+            }
+            container.style.display = 'block';
+        }
+    }
+
+    function getPaymentInfo() {
+        if (!selectedPayment) return 'Not selected yet';
+        const info = paymentDetails[selectedPayment];
+        return `${info.icon} ${info.name}: ${info.detail}`;
+    }
+
+    // ============================================
+    // BOOK NOW — Linked with Crystals
+    // ============================================
+
+    function bookNow(platform) {
+        const selectedItems = Object.keys(selectedReadings).filter(id => selectedReadings[id] > 0);
+        if (selectedItems.length === 0) {
+            showToast('⚠️ Please select at least one reading, love! ❤️');
+            document.querySelector('.readings-grid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
+        const name = clientName?.value.trim();
+        const phone = clientPhone?.value.trim();
+        const email = clientEmail?.value.trim();
+
+        if (!name) { showToast('⚠️ Please enter your full name, love! ❤️'); clientName?.focus(); return; }
+        if (!phone) { showToast('⚠️ Please enter your phone number, love! ❤️'); clientPhone?.focus(); return; }
+        if (!email) { showToast('⚠️ Please enter your email address, love! ❤️'); clientEmail?.focus(); return; }
+
+        if (!selectedPayment) {
+            showToast('⚠️ Please select a payment method, love! ❤️');
+            document.querySelector('.payment-grid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
+        const duration = DURATIONS.find(d => d.minutes === selectedDuration);
+        let readingList = '';
+        let readingTotalPrice = 0;
+        selectedItems.forEach(id => {
+            const reading = READINGS.find(r => r.id === id);
+            const qty = selectedReadings[id];
+            const price = reading.basePrice * qty;
+            readingTotalPrice += price;
+            readingList += `  • ${reading.icon} ${reading.name} x${qty} = $${price.toFixed(2)}\n`;
+        });
+
+        const questions = questionsInput ? questionsInput.value.trim() : '';
+        const finalQuestions = questions || 'No specific questions — read what Spirit brings through';
+
+        // ===== CRYSTAL SECTION (Linked from crystal.html) =====
+        let crystalSection = '';
+        let crystalTotal = 0;
+        if (crystalCart && crystalCart.length > 0) {
+            let itemsList = crystalCart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                crystalTotal += itemTotal;
+                return `  • ${item.name} x${item.quantity} = $${itemTotal.toFixed(2)}`;
+            }).join('\n');
+            crystalSection = `
+━━━━━━━━━━━━━━━━━━━━━
+🛒 *Crystals & Beads Order:*
+${itemsList}
+
+💎 *Crystals Total: $${crystalTotal.toFixed(2)}*
+`;
+        }
+
+        const grandTotal = readingTotalPrice + crystalTotal;
+        const dateTime = clientDateTime?.value.trim() || 'To be confirmed';
+        const paymentInfo = getPaymentInfo();
+
+        const message = `
+🔮 *SPIRITUAL SOUL BOOKING* 🔮
+━━━━━━━━━━━━━━━━━━━━━
+
+👤 *Client Details:*
+📛 Name: ${name}
+📱 Phone: ${phone}
+📧 Email: ${email}
+📅 Preferred Date/Time: ${dateTime}
+
+━━━━━━━━━━━━━━━━━━━━━
+📖 *Readings Selected:*
+${readingList}
+⏰ *Duration:* ${duration.minutes} minutes (${duration.label})
+
+💭 *Your Questions:*
+${finalQuestions}
+${crystalSection}
+━━━━━━━━━━━━━━━━━━━━━
+📚 *Reading Total: $${readingTotalPrice.toFixed(2)}`
+        + (crystalTotal > 0 ? `
+💎 *Crystals Total: $${crystalTotal.toFixed(2)}` : '')
+        + `
+💵 *Grand Total: $${grandTotal.toFixed(2)}*
+
+💳 *Payment Method:*
+${paymentInfo}
+━━━━━━━━━━━━━━━━━━━━━
+
+✨ I'll confirm your booking within 24 hours, love!
+
+"Sending positive energy to you! ❤️🛐🧿🔮☮️🌅"
+        `.trim();
+
+        const encoded = encodeURIComponent(message);
+        let url = '';
+        if (platform === 'whatsapp') {
+            url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+        } else if (platform === 'telegram') {
+            url = `https://t.me/${TELEGRAM_USERNAME}?text=${encoded}`;
+        }
+        window.open(url, '_blank');
+        showToast(`✨ Opening ${platform.charAt(0).toUpperCase() + platform.slice(1)}... Sending love! ❤️`);
+
+        sessionStorage.removeItem('crystalCart');
+        sessionStorage.removeItem('cartMessage');
+    }
+
+    // ============================================
+    // TOAST
+    // ============================================
+
+    let toastTimeout;
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => { toast.classList.remove('show'); }, 3000);
+    }
+
+    // ============================================
+    // LOAD CRYSTAL CART (Linked from crystal.html)
+    // ============================================
+
+    function loadCrystalCart() {
+        const cartData = sessionStorage.getItem('crystalCart');
+        if (cartData) {
+            try {
+                crystalCart = JSON.parse(cartData);
+                if (crystalCart.length > 0) {
+                    cartAlert.style.display = 'flex';
+                    const itemCount = crystalCart.reduce((sum, item) => sum + item.quantity, 0);
+                    bookingSubtitle.textContent = `📦 You have ${itemCount} crystal item(s) in your cart! Your booking will include both your readings and crystals. ❤️`;
+                    const itemsList = crystalCart.map(item => `${item.name} x${item.quantity}`).join(', ');
+                    if (questionsInput) {
+                        questionsInput.value = `🛒 Also ordering: ${itemsList}\n\n`;
+                    }
+                }
+            } catch (e) { console.log('Error loading cart:', e); }
+        }
+    }
+
+    // ============================================
+    // TOGGLE MENU
+    // ============================================
+
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+
+    // ============================================
+    // INIT
+    // ============================================
+
+    function init() {
+        renderReadings();
+        renderDurations();
+        loadCrystalCart();
+        console.log('🔮 Spiritual Soul Booking Page is ready, love! ❤️🛐🧿🔮☮️🌅');
+        console.log('💳 9 Payment Methods Available');
+        console.log('📦 Crystal cart linked from crystal.html');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
+
+    window.updateReadingQty = updateReadingQty;
+    window.selectDuration = selectDuration;
+    window.selectPayment = selectPayment;
+    window.bookNow = bookNow;
+    window.showToast = showToast;
+    window.toggleMenu = toggleMenu;
+</script>
+</body>
+</html>
