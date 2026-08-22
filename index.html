@@ -130,19 +130,35 @@
             font-size: 2rem;
             color: var(--gold);
         }
-        .hero-content h1 {
+        
+        /* ===== TEXT SLIDESHOW ===== */
+        .text-slideshow {
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+        }
+        .text-slideshow .ts-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--text-dark);
             line-height: 1.1;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
-        .hero-content h1 span { color: var(--primary); }
+        .text-slideshow .ts-slide span { color: var(--primary); }
+        .text-slideshow .ts-slide.active { opacity: 1; }
+        
         .hero-content .subtitle {
             font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.8;
             max-width: 500px;
+            margin-top: 4px;
         }
         .hero-buttons {
             display: flex;
@@ -191,7 +207,7 @@
             transform: translateY(-3px);
         }
         
-        /* ===== SLIDESHOW IMAGE ===== */
+        /* ===== IMAGE SLIDESHOW ===== */
         .slideshow-container {
             width: 100%;
             max-width: 450px;
@@ -489,7 +505,8 @@
             .slideshow-container { max-width: 100%; height: 320px; }
             .steps-grid { grid-template-columns: 1fr 1fr; }
             .why-grid { grid-template-columns: 1fr 1fr; }
-            .hero-content h1 { font-size: 3rem; }
+            .text-slideshow { height: 70px; }
+            .text-slideshow .ts-slide { font-size: 3rem; }
         }
         @media (max-width: 768px) {
             .nav-links {
@@ -506,7 +523,8 @@
             }
             .nav-links.show { display: flex; }
             .hamburger { display: flex; }
-            .hero-content h1 { font-size: 2.5rem; }
+            .text-slideshow { height: 60px; }
+            .text-slideshow .ts-slide { font-size: 2.5rem; }
             .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
             .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
             .footer-container { grid-template-columns: 1fr; gap: 24px; }
@@ -520,7 +538,8 @@
             .trust-badges { gap: 20px; }
         }
         @media (max-width: 480px) {
-            .hero-content h1 { font-size: 2rem; }
+            .text-slideshow { height: 50px; }
+            .text-slideshow .ts-slide { font-size: 2rem; }
         }
     </style>
 </head>
@@ -552,8 +571,13 @@
         <span class="hero-badge">✨ Your Light is Calling</span>
         <span class="greeting">Welcome, Love ❤️</span>
         
-        <!-- BIG CLEAR TEXT - NO ANIMATION -->
-        <h1>Find Peace, <span>Love</span> & Purpose</h1>
+        <!-- TEXT SLIDESHOW -->
+        <div class="text-slideshow">
+            <div class="ts-slide active">Find Peace, <span>Love</span> & Purpose</div>
+            <div class="ts-slide">Trust Your <span>Journey</span></div>
+            <div class="ts-slide">Embrace Your <span>Light</span></div>
+            <div class="ts-slide">You Are <span>Enough</span></div>
+        </div>
         
         <p class="subtitle">
             Sending positive energy to you if you need healing. I do relationship readings, 
@@ -713,6 +737,18 @@
 </footer>
 
 <script>
+    // ===== TEXT SLIDESHOW =====
+    let textIndex = 0;
+    const textSlides = document.querySelectorAll('.ts-slide');
+    let textTimer;
+
+    function nextTextSlide() {
+        textSlides.forEach(s => s.classList.remove('active'));
+        textIndex = (textIndex + 1) % textSlides.length;
+        textSlides[textIndex].classList.add('active');
+    }
+
+    // ===== IMAGE SLIDESHOW =====
     let slideIndex = 0;
     let slideTimer;
 
@@ -734,8 +770,10 @@
         document.querySelector('.hamburger').classList.toggle('active');
     }
 
+    // ===== START SLIDESHOWS =====
     showSlide(0);
     slideTimer = setInterval(nextSlide, 5000);
+    textTimer = setInterval(nextTextSlide, 3000);
 </script>
 </body>
 </html>
