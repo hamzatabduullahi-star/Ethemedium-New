@@ -7,7 +7,6 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="style.css"/>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -88,26 +87,7 @@
             color: var(--primary);
             font-weight: 600;
         }
-        .btn-nav {
-            background: var(--primary);
-            color: white;
-            padding: 10px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-nav:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
+        /* REMOVED Book Now button from nav */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -314,7 +294,7 @@
             <li><a href="crystal.html"><i class="fas fa-gem"></i> Crystals</a></li>
             <li><a href="testimonial.html"><i class="fas fa-heart"></i> Testimonials</a></li>
         </ul>
-        <a href="booking.html" class="btn-nav"><i class="fas fa-calendar-check"></i> Book Now</a>
+        <!-- REMOVED Book Now button from nav -->
         <div class="hamburger" onclick="toggleMenu()">
             <span></span><span></span><span></span>
         </div>
