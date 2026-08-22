@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>🔮 Spiritual Soul — Readings & Crystals</title>
+    <title>🔮 Spiritual Soul — Readings & Healing</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #F0F7F2; font-family: 'Inter', sans-serif; min-height: 100vh; }
+        body { 
+            background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); 
+            font-family: 'Inter', sans-serif; 
+            min-height: 100vh; 
+        }
         
-        /* ===== EMERALD GREEN THEME ===== */
+        /* ===== WARM SUNSET/GOLD THEME ===== */
         :root {
-            --primary: #1A7A4A;
-            --primary-light: #2D9A6A;
-            --primary-dark: #0D5A3A;
-            --gold: #C9A84C;
-            --gold-light: #E8D5A0;
-            --text-dark: #1A2A22;
-            --text-muted: #5A7A6A;
+            --primary: #C97B3A;
+            --primary-light: #E0955A;
+            --primary-dark: #A8622A;
+            --gold: #D4A84C;
+            --gold-light: #F0DC8A;
+            --cream: #FFF8F0;
+            --text-dark: #3D2A1A;
+            --text-muted: #8A7A6A;
             --white: #FFFFFF;
-            --shadow: 0 8px 32px rgba(26, 122, 74, 0.12);
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.15);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.25);
             --radius: 16px;
             --transition: all 0.3s ease;
         }
@@ -33,9 +39,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255,255,255,0.92);
+            background: rgba(255, 248, 240, 0.92);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(26, 122, 74, 0.1);
+            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
             z-index: 1000;
             padding: 0 24px;
             height: 72px;
@@ -57,15 +63,11 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             font-size: 1.4rem;
-            color: var(--primary);
+            color: var(--primary-dark);
             text-decoration: none;
         }
-        .nav-logo .logo-icon {
-            font-size: 1.6rem;
-        }
-        .nav-logo .logo-text span {
-            color: var(--gold);
-        }
+        .nav-logo .logo-icon { font-size: 1.6rem; }
+        .nav-logo .logo-text span { color: var(--gold); }
         .nav-links {
             display: flex;
             list-style: none;
@@ -122,7 +124,7 @@
             transition: var(--transition);
         }
         
-        /* ===== HERO SECTION (NEW DESIGN) ===== */
+        /* ===== HERO SECTION ===== */
         .hero {
             padding: 120px 24px 60px;
             max-width: 1200px;
@@ -131,36 +133,36 @@
             grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
-            min-height: 90vh;
+            min-height: 85vh;
         }
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+        .hero-content { display: flex; flex-direction: column; gap: 16px; }
         .hero-badge {
             display: inline-block;
             background: var(--gold-light);
             color: var(--primary-dark);
-            padding: 6px 18px;
+            padding: 6px 20px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             width: fit-content;
         }
-        .hero-content h1 {
+        .hero-content .greeting {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: var(--primary-dark);
-            line-height: 1.1;
-        }
-        .hero-content h1 span {
+            font-size: 2rem;
             color: var(--gold);
         }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+        .hero-content h1 span { color: var(--primary); }
         .hero-content .subtitle {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.8;
             max-width: 500px;
@@ -169,7 +171,7 @@
             display: flex;
             gap: 14px;
             flex-wrap: wrap;
-            margin-top: 8px;
+            margin-top: 6px;
         }
         .btn-primary {
             background: var(--primary);
@@ -189,7 +191,7 @@
         .btn-primary:hover {
             background: var(--primary-light);
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
         }
         .btn-secondary {
             background: transparent;
@@ -217,64 +219,63 @@
             justify-content: center;
             align-items: center;
         }
-        .hero-image .image-placeholder {
-            background: linear-gradient(135deg, var(--primary-light), var(--primary));
-            border-radius: 24px;
-            padding: 50px;
+        .hero-image .image-box {
+            background: linear-gradient(135deg, #F0DC8A, #E0955A, #C97B3A);
+            border-radius: 30px;
+            padding: 50px 40px;
             text-align: center;
             color: white;
             width: 100%;
             max-width: 450px;
-            box-shadow: 0 20px 60px rgba(26, 122, 74, 0.2);
+            box-shadow: 0 20px 60px rgba(201, 123, 58, 0.25);
             position: relative;
             overflow: hidden;
         }
-        .hero-image .image-placeholder .big-icon {
-            font-size: 5rem;
-            display: block;
-            margin-bottom: 12px;
-        }
-        .hero-image .image-placeholder h3 {
+        .hero-image .image-box .big-icon { font-size: 4.5rem; display: block; margin-bottom: 10px; }
+        .hero-image .image-box h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
         }
-        .hero-image .image-placeholder p {
-            opacity: 0.8;
+        .hero-image .image-box p {
+            opacity: 0.9;
             font-size: 0.95rem;
+            margin-top: 4px;
+        }
+        .hero-image .image-box .glow {
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin-top: 12px;
+            display: block;
         }
         
         /* ===== FEATURES SECTION ===== */
         .features {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 24px 80px;
+            padding: 50px 24px 70px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
         .feature-card {
-            background: white;
+            background: var(--white);
             border-radius: var(--radius);
             padding: 30px 24px;
             text-align: center;
-            border: 1px solid rgba(26, 122, 74, 0.08);
+            border: 1px solid rgba(212, 168, 76, 0.12);
             transition: var(--transition);
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
         .feature-card:hover {
             transform: translateY(-6px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
             border-color: var(--gold);
         }
-        .feature-card .icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 12px;
-        }
+        .feature-card .icon { font-size: 2.5rem; display: block; margin-bottom: 10px; }
         .feature-card h4 {
             font-family: 'Playfair Display', serif;
             font-size: 1.1rem;
-            color: var(--primary-dark);
+            color: var(--text-dark);
         }
         .feature-card p {
             font-size: 0.85rem;
@@ -287,14 +288,14 @@
         .qr-section {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 24px 50px;
+            padding: 35px 24px 45px;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 50px;
             flex-wrap: wrap;
-            border-top: 2px dashed rgba(26, 122, 74, 0.15);
-            border-bottom: 2px dashed rgba(26, 122, 74, 0.15);
+            border-top: 2px dashed rgba(212, 168, 76, 0.25);
+            border-bottom: 2px dashed rgba(212, 168, 76, 0.25);
         }
         .qr-box { text-align: center; }
         .qr-box h4 {
@@ -319,7 +320,7 @@
         }
         .qr-image:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-hover);
         }
         .qr-features { text-align: left; color: var(--text-dark); }
         .qr-features h4 {
@@ -338,9 +339,8 @@
         /* ===== FOOTER ===== */
         .footer {
             background: var(--primary-dark);
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.85);
             padding: 40px 24px 20px;
-            margin-top: 0;
         }
         .footer-container {
             max-width: 1200px;
@@ -387,12 +387,10 @@
                 text-align: center;
                 padding-top: 100px;
             }
-            .hero-content {
-                align-items: center;
-            }
+            .hero-content { align-items: center; }
             .hero-badge { align-self: center; }
             .hero-content .subtitle { max-width: 100%; }
-            .hero-image .image-placeholder { max-width: 100%; }
+            .hero-image .image-box { max-width: 100%; }
             .features { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
@@ -406,7 +404,7 @@
                 flex-direction: column;
                 padding: 24px;
                 gap: 16px;
-                border-bottom: 1px solid rgba(26, 122, 74, 0.1);
+                border-bottom: 1px solid rgba(212, 168, 76, 0.15);
             }
             .nav-links.show { display: flex; }
             .hamburger { display: flex; }
@@ -446,23 +444,24 @@
 <!-- ===== HERO SECTION ===== -->
 <section class="hero">
     <div class="hero-content">
-        <span class="hero-badge">✨ Spiritual Guidance</span>
-        <h1>Find Your <span>Light</span>, Love ❤️</h1>
+        <span class="hero-badge">✨ Your Light is Calling</span>
+        <span class="greeting">Welcome, Love ❤️</span>
+        <h1>Find Peace, <span>Love</span> & Purpose</h1>
         <p class="subtitle">
             Sending positive energy to you if you need healing. I do relationship readings, 
             career readings, finance readings, future readings, and intuitive guidance.
         </p>
         <div class="hero-buttons">
-            <a href="booking.html" class="btn-primary"><i class="fas fa-hand-sparkles"></i> Book a Reading</a>
+            <a href="booking.html" class="btn-primary"><i class="fas fa-hand-sparkles"></i> Book Reading</a>
             <a href="readings.html" class="btn-secondary"><i class="fas fa-arrow-right"></i> View Readings</a>
         </div>
     </div>
     <div class="hero-image">
-        <div class="image-placeholder">
-            <span class="big-icon">🔮</span>
-            <h3>Connect With Spirit</h3>
+        <div class="image-box">
+            <span class="big-icon">🌅</span>
+            <h3>Your Light is Calling</h3>
             <p>Trust the signs, follow your heart</p>
-            <div style="margin-top: 12px; font-size: 2rem; letter-spacing: 8px;">🛐 🧿 ☮️ 🌅</div>
+            <span class="glow">🛐 🧿 ☮️ 🌅</span>
         </div>
     </div>
 </section>
