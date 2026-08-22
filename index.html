@@ -131,37 +131,46 @@
             color: var(--gold);
         }
         
-        /* ===== TEXT SLIDESHOW - FIXED ===== */
+        /* ===== TEXT SLIDESHOW - SLIDE IN/OUT ===== */
         .text-slideshow {
             position: relative;
             height: 90px;
             overflow: hidden;
-            background: rgba(255, 248, 240, 0.6);
-            border-radius: 16px;
-            padding: 0 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 100%;
         }
         .text-slideshow .ts-slide {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 0;
+            left: 0;
             width: 100%;
-            text-align: center;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             font-weight: 900;
             color: var(--text-dark);
             line-height: 1.2;
+            transform: translateX(100%);
             opacity: 0;
-            transition: opacity 0.8s ease;
+            transition: all 0.8s ease-in-out;
+            text-align: center;
             padding: 0 10px;
         }
         .text-slideshow .ts-slide span { color: var(--primary); }
-        .text-slideshow .ts-slide.active { opacity: 1; }
+        .text-slideshow .ts-slide.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .text-slideshow .ts-slide.exit {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        .text-slideshow .ts-slide.enter {
+            transform: translateX(100%);
+            opacity: 0;
+        }
         
         .hero-content .subtitle {
             font-size: 1.05rem;
@@ -581,8 +590,8 @@
         <span class="hero-badge">✨ Your Light is Calling</span>
         <span class="greeting">Welcome, Love ❤️</span>
         
-        <!-- TEXT SLIDESHOW - FIXED -->
-        <div class="text-slideshow">
+        <!-- TEXT SLIDESHOW - SLIDE IN/OUT -->
+        <div class="text-slideshow" id="textSlideshow">
             <div class="ts-slide active">Find Peace, <span>Love</span> & Purpose</div>
             <div class="ts-slide">Trust Your <span>Journey</span></div>
             <div class="ts-slide">Embrace Your <span>Light</span></div>
@@ -747,15 +756,35 @@
 </footer>
 
 <script>
-    // ===== TEXT SLIDESHOW =====
+    // ===== TEXT SLIDESHOW - SLIDE EFFECT =====
     let textIndex = 0;
     const textSlides = document.querySelectorAll('.ts-slide');
     let textTimer;
+    let isAnimating = false;
 
     function nextTextSlide() {
-        textSlides.forEach(s => s.classList.remove('active'));
-        textIndex = (textIndex + 1) % textSlides.length;
-        textSlides[textIndex].classList.add('active');
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        const current = textSlides[textIndex];
+        const nextIndex = (textIndex + 1) % textSlides.length;
+        const next = textSlides[nextIndex];
+        
+        // Current slides out to left
+        current.classList.remove('active');
+        current.classList.add('exit');
+        
+        // Next slides in from right
+        next.classList.add('enter');
+        next.classList.add('active');
+        
+        setTimeout(() => {
+            current.classList.remove('exit');
+            next.classList.remove('enter');
+            isAnimating = false;
+        }, 800);
+        
+        textIndex = nextIndex;
     }
 
     // ===== IMAGE SLIDESHOW =====
@@ -781,9 +810,18 @@
     }
 
     // ===== START SLIDESHOWS =====
+    // Set initial active state
+    textSlides.forEach((s, i) => {
+        if (i === 0) {
+            s.classList.add('active');
+        } else {
+            s.classList.add('enter');
+        }
+    });
+
     showSlide(0);
     slideTimer = setInterval(nextSlide, 5000);
-    textTimer = setInterval(nextTextSlide, 3000);
+    textTimer = setInterval(nextTextSlide, 3500);
 </script>
 </body>
 </html>
