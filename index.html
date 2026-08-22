@@ -102,6 +102,7 @@
             transition: var(--transition);
         }
         
+        /* ===== HERO ===== */
         .hero {
             padding: 110px 24px 60px;
             max-width: 1200px;
@@ -112,7 +113,7 @@
             align-items: center;
             min-height: 85vh;
         }
-        .hero-content { display: flex; flex-direction: column; gap: 16px; }
+        .hero-content { display: flex; flex-direction: column; gap: 16px; overflow: hidden; }
         .hero-badge {
             display: inline-block;
             background: var(--gold-light);
@@ -130,19 +131,42 @@
             font-size: 2rem;
             color: var(--gold);
         }
-        .hero-content h1 {
+        
+        /* ===== SLIDING TEXT ANIMATION ===== */
+        .sliding-text {
+            position: relative;
+            height: 80px;
+            overflow: hidden;
+        }
+        .sliding-text .text-slide {
+            position: absolute;
+            width: 100%;
             font-family: 'Playfair Display', serif;
             font-size: 3.8rem;
             font-weight: 900;
             color: var(--text-dark);
             line-height: 1.1;
+            animation: slideInOut 6s ease-in-out infinite;
         }
-        .hero-content h1 span { color: var(--primary); }
+        .sliding-text .text-slide span { color: var(--primary); }
+        .sliding-text .text-slide:nth-child(1) { animation-delay: 0s; }
+        .sliding-text .text-slide:nth-child(2) { animation-delay: 2s; }
+        .sliding-text .text-slide:nth-child(3) { animation-delay: 4s; }
+        
+        @keyframes slideInOut {
+            0% { transform: translateX(100%); opacity: 0; }
+            10% { transform: translateX(0); opacity: 1; }
+            30% { transform: translateX(0); opacity: 1; }
+            40% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(-100%); opacity: 0; }
+        }
+        
         .hero-content .subtitle {
             font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.8;
             max-width: 500px;
+            margin-top: 10px;
         }
         .hero-buttons {
             display: flex;
@@ -191,6 +215,7 @@
             transform: translateY(-3px);
         }
         
+        /* ===== SLIDESHOW IMAGE ===== */
         .slideshow-container {
             width: 100%;
             max-width: 450px;
@@ -247,6 +272,7 @@
         .slide-dot.active { background: white; transform: scale(1.2); }
         .slide-dot:hover { background: rgba(255,255,255,0.8); }
         
+        /* ===== TRUST BADGES ===== */
         .trust-badges {
             max-width: 1200px;
             margin: 0 auto;
@@ -267,6 +293,7 @@
         }
         .trust-item i { color: var(--gold); font-size: 1.2rem; }
         
+        /* ===== HOW IT WORKS ===== */
         .how-it-works {
             max-width: 1200px;
             margin: 0 auto;
@@ -337,6 +364,7 @@
             line-height: 1.6;
         }
         
+        /* ===== WHY CHOOSE ME ===== */
         .why-choose {
             background: var(--white);
             padding: 40px 24px 50px;
@@ -378,6 +406,7 @@
         .why-item h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-dark); }
         .why-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
         
+        /* ===== QR CODE ===== */
         .qr-section {
             max-width: 1000px;
             margin: 0 auto;
@@ -427,6 +456,7 @@
         }
         .qr-features i { color: var(--primary); width: 22px; }
         
+        /* ===== FOOTER ===== */
         .footer {
             background: var(--primary-dark);
             color: rgba(255,255,255,0.85);
@@ -499,7 +529,8 @@
             }
             .nav-links.show { display: flex; }
             .hamburger { display: flex; }
-            .hero-content h1 { font-size: 2.5rem; }
+            .sliding-text { height: 60px; }
+            .sliding-text .text-slide { font-size: 2.5rem; }
             .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
             .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
             .footer-container { grid-template-columns: 1fr; gap: 24px; }
@@ -511,6 +542,10 @@
             .steps-grid { grid-template-columns: 1fr; }
             .why-grid { grid-template-columns: 1fr; }
             .trust-badges { gap: 20px; }
+        }
+        @media (max-width: 480px) {
+            .sliding-text { height: 50px; }
+            .sliding-text .text-slide { font-size: 2rem; }
         }
     </style>
 </head>
@@ -541,7 +576,14 @@
     <div class="hero-content">
         <span class="hero-badge">✨ Your Light is Calling</span>
         <span class="greeting">Welcome, Love ❤️</span>
-        <h1>Find Peace, <span>Love</span> & Purpose</h1>
+        
+        <!-- Sliding Text -->
+        <div class="sliding-text">
+            <div class="text-slide">Find Peace, <span>Love</span> & Purpose</div>
+            <div class="text-slide">Trust Your <span>Journey</span></div>
+            <div class="text-slide">Embrace Your <span>Light</span></div>
+        </div>
+        
         <p class="subtitle">
             Sending positive energy to you if you need healing. I do relationship readings, 
             career readings, finance readings, future readings, and intuitive guidance.
@@ -700,6 +742,7 @@
 </footer>
 
 <script>
+    // ===== SLIDESHOW =====
     let slideIndex = 0;
     let slideTimer;
 
