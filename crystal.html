@@ -37,9 +37,8 @@
         .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
         .hamburger span{width:28px;height:3px;background:var(--primary);border-radius:3px;transition:var(--transition);}
 
-        .currency-selector{display:flex;align-items:center;gap:8px;background:white;padding:6px 14px;border-radius:50px;border:1px solid #E0D0D0;}
-        .currency-selector label{font-size:0.75rem;color:var(--text-muted);font-weight:500;}
-        .currency-selector select{border:none;background:transparent;font-size:0.85rem;font-weight:600;color:var(--primary);cursor:pointer;outline:none;font-family:'Inter',sans-serif;}
+        .currency-selector{display:flex;align-items:center;gap:6px;background:white;padding:4px 12px;border-radius:50px;border:1px solid rgba(212,168,76,0.2);}
+        .currency-selector select{border:none;background:transparent;font-size:0.8rem;font-weight:600;color:var(--primary);cursor:pointer;outline:none;font-family:'Inter',sans-serif;padding:2px 0;}
         .currency-selector select option{padding:4px;}
 
         .cart-icon{position:relative;cursor:pointer;font-size:1.3rem;color:var(--primary);transition:var(--transition);}
@@ -122,7 +121,7 @@
         .page-header h1{font-size:1.8rem;}
         .product-card img{height:220px;}
         .footer-container{grid-template-columns:1fr;gap:20px;}
-        .currency-selector{padding:4px 10px;}
+        .currency-selector{padding:3px 10px;}
         .currency-selector select{font-size:0.75rem;}
         .cart-sidebar{width:100%;max-width:100%;}
         .cart-item{flex-wrap:wrap;gap:8px;}
@@ -182,13 +181,14 @@
             <li><a href="testimonial.html"><i class="fas fa-heart"></i> Testimonials</a></li>
         </ul>
         <div class="nav-cta" style="display:flex;align-items:center;gap:12px;">
+            <!-- CLEAN CURRENCY SELECTOR -->
             <div class="currency-selector">
-                <label><i class="fas fa-globe"></i></label>
+                <label style="font-size:0.7rem;color:var(--text-muted);">💱</label>
                 <select id="currencySelect" onchange="changeCurrency()">
-                    <option value="USD">🇺🇸 USD ($)</option>
-                    <option value="CAD">🇨🇦 CAD (CA$)</option>
-                    <option value="AUD">🇦🇺 AUD (AU$)</option>
-                    <option value="GBP">🇬🇧 GBP (£)</option>
+                    <option value="USD">🇺🇸 $</option>
+                    <option value="CAD">🇨🇦 CA$</option>
+                    <option value="AUD">🇦🇺 AU$</option>
+                    <option value="GBP">🇬🇧 £</option>
                 </select>
             </div>
             <div class="cart-icon" onclick="openCart()">
