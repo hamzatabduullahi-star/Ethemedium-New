@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🔮 Spiritual Soul — Readings & Crystals</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #F0F7F2; font-family: 'Inter', sans-serif; min-height: 100vh; }
+        
+        /* ===== EMERALD GREEN THEME ===== */
+        :root {
+            --primary: #1A7A4A;
+            --primary-light: #2D9A6A;
+            --primary-dark: #0D5A3A;
+            --gold: #C9A84C;
+            --gold-light: #E8D5A0;
+            --text-dark: #1A2A22;
+            --text-muted: #5A7A6A;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(26, 122, 74, 0.12);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(26, 122, 74, 0.1);
+            z-index: 1000;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .nav-logo .logo-icon {
+            font-size: 1.6rem;
+        }
+        .nav-logo .logo-text span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .btn-nav {
+            background: var(--primary);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-nav:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* ===== HERO SECTION (NEW DESIGN) ===== */
+        .hero {
+            padding: 120px 24px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            min-height: 90vh;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+        .hero-content h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary-dark);
+            line-height: 1.1;
+        }
+        .hero-content h1 span {
+            color: var(--gold);
+        }
+        .hero-content .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 500px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid var(--primary);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-image .image-placeholder {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: 24px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(26, 122, 74, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image .image-placeholder .big-icon {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .hero-image .image-placeholder h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+        }
+        .hero-image .image-placeholder p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px 80px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px 24px;
+            text-align: center;
+            border: 1px solid rgba(26, 122, 74, 0.08);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: var(--gold);
+        }
+        .feature-card .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .feature-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+        }
+        .feature-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+        
+        /* ===== QR CODE SECTION ===== */
+        .qr-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            border-top: 2px dashed rgba(26, 122, 74, 0.15);
+            border-bottom: 2px dashed rgba(26, 122, 74, 0.15);
+        }
+        .qr-box { text-align: center; }
+        .qr-box h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .qr-box .qr-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .qr-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 16px;
+            border: 3px solid var(--gold);
+            padding: 6px;
+            background: white;
+            transition: var(--transition);
+        }
+        .qr-image:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow);
+        }
+        .qr-features { text-align: left; color: var(--text-dark); }
+        .qr-features h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .qr-features p {
+            font-size: 0.9rem;
+            line-height: 2;
+            color: var(--text-muted);
+        }
+        .qr-features i { color: var(--primary); width: 22px; }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 40px 24px 20px;
+            margin-top: 0;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.7; }
+        .footer-links h4, .footer-contact h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+        .footer-links a, .footer-contact a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            padding: 4px 0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover, .footer-contact a:hover { color: white; }
+        .footer-socials { display: flex; gap: 14px; margin-top: 12px; }
+        .footer-socials a { color: rgba(255,255,255,0.6); font-size: 1.2rem; transition: var(--transition); }
+        .footer-socials a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 100px;
+            }
+            .hero-content {
+                align-items: center;
+            }
+            .hero-badge { align-self: center; }
+            .hero-content .subtitle { max-width: 100%; }
+            .hero-image .image-placeholder { max-width: 100%; }
+            .features { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(26, 122, 74, 0.1);
+            }
+            .nav-links.show { display: flex; }
+            .hamburger { display: flex; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .features { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; gap: 24px; }
+            .qr-section { flex-direction: column; text-align: center; gap: 20px; }
+            .qr-features { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🔮</span>
+            <span class="logo-text">Spiritual<span>Soul</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="readings.html"><i class="fas fa-hand-sparkles"></i> Readings</a></li>
+            <li><a href="about.html"><i class="fas fa-star"></i> About</a></li>
+            <li><a href="crystal.html"><i class="fas fa-gem"></i> Crystals</a></li>
+            <li><a href="testimonial.html"><i class="fas fa-heart"></i> Testimonials</a></li>
+        </ul>
+        <a href="booking.html" class="btn-nav"><i class="fas fa-calendar-check"></i> Book Now</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <span class="hero-badge">✨ Spiritual Guidance</span>
+        <h1>Find Your <span>Light</span>, Love ❤️</h1>
+        <p class="subtitle">
+            Sending positive energy to you if you need healing. I do relationship readings, 
+            career readings, finance readings, future readings, and intuitive guidance.
+        </p>
+        <div class="hero-buttons">
+            <a href="booking.html" class="btn-primary"><i class="fas fa-hand-sparkles"></i> Book a Reading</a>
+            <a href="readings.html" class="btn-secondary"><i class="fas fa-arrow-right"></i> View Readings</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="image-placeholder">
+            <span class="big-icon">🔮</span>
+            <h3>Connect With Spirit</h3>
+            <p>Trust the signs, follow your heart</p>
+            <div style="margin-top: 12px; font-size: 2rem; letter-spacing: 8px;">🛐 🧿 ☮️ 🌅</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FEATURES SECTION ===== -->
+<section class="features">
+    <div class="feature-card">
+        <span class="icon">💖</span>
+        <h4>Love & Relationship</h4>
+        <p>Find clarity in your love life, twin flame connections, and heart healing</p>
+    </div>
+    <div class="feature-card">
+        <span class="icon">💼</span>
+        <h4>Career & Finance</h4>
+        <p>Get guidance on your career path, money flow, and life purpose</p>
+    </div>
+    <div class="feature-card">
+        <span class="icon">🕊️</span>
+        <h4>Healing & Peace</h4>
+        <p>Release anxiety, depression, and find inner peace with spiritual guidance</p>
+    </div>
+</section>
+
+<!-- ===== QR CODE SECTION ===== -->
+<section class="qr-section">
+    <div class="qr-box">
+        <h4>📱 Scan to Visit</h4>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://hamzatabduullahi-star.github.io/ethemedium-new/" 
+             alt="Scan QR Code" 
+             class="qr-image" />
+        <p class="qr-sub">Scan with your phone camera</p>
+    </div>
+    <div class="qr-features">
+        <h4>✨ Quick Access</h4>
+        <p>
+            <i class="fas fa-check-circle"></i> Book a reading instantly<br>
+            <i class="fas fa-check-circle"></i> Shop crystals & beads<br>
+            <i class="fas fa-check-circle"></i> Get spiritual guidance<br>
+            <i class="fas fa-check-circle"></i> 100% confidential
+        </p>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <span class="footer-logo">🔮 Spiritual Soul</span>
+            <p>Sending positive energy to you if you need healing, love ❤️</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="readings.html">Readings</a>
+            <a href="about.html">About</a>
+            <a href="crystal.html">Crystals</a>
+            <a href="testimonial.html">Testimonials</a>
+            <a href="booking.html">Book Now</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Spiritual Soul — Made with love ❤️🛐🧿🔮☮️🌅</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+</script>
+</body>
+</html>
