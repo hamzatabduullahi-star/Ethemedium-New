@@ -132,33 +132,35 @@
             color: var(--gold);
         }
         
-        /* ===== SLIDING TEXT ANIMATION ===== */
+        /* ===== SLIDING TEXT ===== */
         .sliding-text {
             position: relative;
-            height: 80px;
+            height: 70px;
             overflow: hidden;
+            width: 100%;
         }
         .sliding-text .text-slide {
             position: absolute;
             width: 100%;
             font-family: 'Playfair Display', serif;
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--text-dark);
             line-height: 1.1;
-            animation: slideInOut 6s ease-in-out infinite;
+            animation: slideInOut 9s ease-in-out infinite;
+            opacity: 0;
         }
         .sliding-text .text-slide span { color: var(--primary); }
         .sliding-text .text-slide:nth-child(1) { animation-delay: 0s; }
-        .sliding-text .text-slide:nth-child(2) { animation-delay: 2s; }
-        .sliding-text .text-slide:nth-child(3) { animation-delay: 4s; }
+        .sliding-text .text-slide:nth-child(2) { animation-delay: 3s; }
+        .sliding-text .text-slide:nth-child(3) { animation-delay: 6s; }
         
         @keyframes slideInOut {
-            0% { transform: translateX(100%); opacity: 0; }
-            10% { transform: translateX(0); opacity: 1; }
-            30% { transform: translateX(0); opacity: 1; }
-            40% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(-100%); opacity: 0; }
+            0% { transform: translateX(80%); opacity: 0; }
+            8% { transform: translateX(0); opacity: 1; }
+            28% { transform: translateX(0); opacity: 1; }
+            36% { transform: translateX(-80%); opacity: 0; }
+            100% { transform: translateX(-80%); opacity: 0; }
         }
         
         .hero-content .subtitle {
@@ -166,7 +168,7 @@
             color: var(--text-muted);
             line-height: 1.8;
             max-width: 500px;
-            margin-top: 10px;
+            margin-top: 4px;
         }
         .hero-buttons {
             display: flex;
@@ -742,7 +744,6 @@
 </footer>
 
 <script>
-    // ===== SLIDESHOW =====
     let slideIndex = 0;
     let slideTimer;
 
