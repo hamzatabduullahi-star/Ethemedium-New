@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🔮 Spiritual Soul — Readings</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); 
+            font-family: 'Inter', sans-serif; 
+            min-height: 100vh; 
+        }
+        
+        :root {
+            --primary: #C97B3A;
+            --primary-light: #E0955A;
+            --primary-dark: #A8622A;
+            --gold: #D4A84C;
+            --gold-light: #F0DC8A;
+            --text-dark: #3D2A1A;
+            --text-muted: #8A7A6A;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.15);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.25);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            z-index: 1000;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+        .nav-logo .logo-icon { font-size: 1.6rem; }
+        .nav-logo .logo-text span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .btn-nav {
+            background: var(--primary);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-nav:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* ===== READINGS PAGE ===== */
+        .page-section {
+            padding: 100px 24px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+        
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+        .reading-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 168, 76, 0.12);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .reading-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+        .reading-card .icon { font-size: 2.8rem; display: block; margin-bottom: 8px; }
+        .reading-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        .reading-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 6px 0 10px;
+            line-height: 1.4;
+        }
+        .reading-card .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 14px;
+        }
+        .reading-card .btn-choose {
+            background: var(--primary);
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .reading-card .btn-choose:hover {
+            background: var(--primary-light);
+            transform: scale(1.02);
+        }
+        .reading-card.featured {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, #FFFBF5, #FFF5E6);
+        }
+        .reading-card .featured-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.85);
+            padding: 40px 24px 20px;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.7; }
+        .footer-links h4, .footer-contact h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+        .footer-links a, .footer-contact a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            padding: 4px 0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover, .footer-contact a:hover { color: white; }
+        .footer-socials { display: flex; gap: 14px; margin-top: 12px; }
+        .footer-socials a { color: rgba(255,255,255,0.6); font-size: 1.2rem; transition: var(--transition); }
+        .footer-socials a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            }
+            .nav-links.show { display: flex; }
+            .hamburger { display: flex; }
+            .readings-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .page-header h1 { font-size: 2rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 24px; }
+        }
+        @media (max-width: 480px) {
+            .readings-grid { grid-template-columns: 1fr; }
+            .reading-card { padding: 20px 16px; }
+            .page-header h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🔮</span>
+            <span class="logo-text">Spiritual<span>Soul</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="readings.html" class="active"><i class="fas fa-hand-sparkles"></i> Readings</a></li>
+            <li><a href="about.html"><i class="fas fa-star"></i> About</a></li>
+            <li><a href="crystal.html"><i class="fas fa-gem"></i> Crystals</a></li>
+            <li><a href="testimonial.html"><i class="fas fa-heart"></i> Testimonials</a></li>
+        </ul>
+        <a href="booking.html" class="btn-nav"><i class="fas fa-calendar-check"></i> Book Now</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== READINGS PAGE ===== -->
+<section class="page-section">
+    <div class="page-header">
+        <span class="page-badge">🔮 Choose Your Reading</span>
+        <h1>What Kind of Reading Do You Want, Love?</h1>
+        <p>Pick the guidance your soul needs right now</p>
+    </div>
+
+    <div class="readings-grid">
+        <!-- 1. Love Reading -->
+        <div class="reading-card">
+            <span class="icon">💖</span>
+            <h3>Love Reading</h3>
+            <p>Soulmate, twin flame, relationship blocks</p>
+            <span class="price">From $45</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 2. General Reading -->
+        <div class="reading-card">
+            <span class="icon">🔮</span>
+            <h3>General Reading</h3>
+            <p>Whatever Spirit wants you to know</p>
+            <span class="price">From $40</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 3. Relationship Reading -->
+        <div class="reading-card">
+            <span class="icon">💑</span>
+            <h3>Relationship Reading</h3>
+            <p>Deep dive into current partnership</p>
+            <span class="price">From $55</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 4. Aura Reading -->
+        <div class="reading-card">
+            <span class="icon">🌈</span>
+            <h3>Aura Reading</h3>
+            <p>See your energy colors & chakras</p>
+            <span class="price">From $60</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 5. Career Reading -->
+        <div class="reading-card">
+            <span class="icon">💼</span>
+            <h3>Career Reading</h3>
+            <p>Career path, promotions, purpose</p>
+            <span class="price">From $55</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 6. Job Reading -->
+        <div class="reading-card">
+            <span class="icon">🏢</span>
+            <h3>Job Reading</h3>
+            <p>Job search, interviews, next steps</p>
+            <span class="price">From $50</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 7. Finance Reading -->
+        <div class="reading-card">
+            <span class="icon">💰</span>
+            <h3>Finance Reading</h3>
+            <p>Money flow, abundance, investments</p>
+            <span class="price">From $55</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 8. Future Reading -->
+        <div class="reading-card">
+            <span class="icon">🌅</span>
+            <h3>Future Reading</h3>
+            <p>What's coming in 3-6 months</p>
+            <span class="price">From $60</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 9. Healing Reading (Featured) -->
+        <div class="reading-card featured">
+            <span class="icon">🕊️</span>
+            <h3>Healing Reading <span class="featured-tag">❤️ Most Loved</span></h3>
+            <p>Depression, anxiety, inner peace</p>
+            <span class="price">From $70</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 10. Intuitive Guidance -->
+        <div class="reading-card">
+            <span class="icon">✨</span>
+            <h3>Intuitive Guidance</h3>
+            <p>Life guidance, decision making, clarity</p>
+            <span class="price">From $50</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 11. Protection Reading -->
+        <div class="reading-card">
+            <span class="icon">🛡️</span>
+            <h3>Protection Reading</h3>
+            <p>Energy protection, spiritual safety</p>
+            <span class="price">From $65</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+
+        <!-- 12. Spiritual Reading -->
+        <div class="reading-card">
+            <span class="icon">🙏</span>
+            <h3>Spiritual Reading</h3>
+            <p>Spiritual awakening, purpose, guides</p>
+            <span class="price">From $60</span>
+            <a href="booking.html" class="btn-choose">Choose</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <span class="footer-logo">🔮 Spiritual Soul</span>
+            <p>Sending positive energy to you if you need healing, love ❤️</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="readings.html">Readings</a>
+            <a href="about.html">About</a>
+            <a href="crystal.html">Crystals</a>
+            <a href="testimonial.html">Testimonials</a>
+            <a href="booking.html">Book Now</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Spiritual Soul — Made with love ❤️🛐🧿🔮☮️🌅</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+</script>
+</body>
+</html>
