@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🔮 Spiritual Soul — Crystals & Ifá Beads</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); 
+            font-family: 'Inter', sans-serif; 
+            min-height: 100vh; 
+        }
+        
+        :root {
+            --primary: #C97B3A;
+            --primary-light: #E0955A;
+            --primary-dark: #A8622A;
+            --gold: #D4A84C;
+            --gold-light: #F0DC8A;
+            --text-dark: #3D2A1A;
+            --text-muted: #8A7A6A;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.15);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.25);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            z-index: 1000;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+        .nav-logo .logo-icon { font-size: 1.6rem; }
+        .nav-logo .logo-text span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .btn-nav {
+            background: var(--primary);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-nav:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* ===== CRYSTAL PAGE ===== */
+        .crystal-page {
+            padding: 100px 24px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-top: 8px;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .emoji-line {
+            font-size: 1.6rem;
+            letter-spacing: 8px;
+            margin-top: 6px;
+        }
+        
+        .section-divider {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 20px 0;
+            border-top: 2px dashed rgba(212, 168, 76, 0.25);
+            border-bottom: 2px dashed rgba(212, 168, 76, 0.25);
+        }
+        .section-divider h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        .section-divider p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 168, 76, 0.1);
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+        .product-card.featured {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, #FFFBF5, #FFF5E6);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            background: #f5ecec;
+        }
+        .product-card .icon {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .product-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        .product-card .desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin: 4px 0 8px;
+            line-height: 1.4;
+        }
+        .product-card .price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .product-card .btn-add {
+            background: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .product-card .btn-add:hover {
+            background: var(--primary-light);
+            transform: scale(1.02);
+        }
+        .product-card .badge {
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: white;
+            margin-left: 4px;
+        }
+        .badge-popular { background: var(--gold); }
+        .badge-best { background: #E8798A; }
+        .badge-save { background: #2d7a5a; }
+        .badge-new { background: #6B2D5C; }
+        
+        .crystals-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 248, 240, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 168, 76, 0.15);
+        }
+        .crystals-note p {
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        .crystals-note i { margin-right: 8px; }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.85);
+            padding: 40px 24px 20px;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.7; }
+        .footer-links h4, .footer-contact h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+        .footer-links a, .footer-contact a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            padding: 4px 0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover, .footer-contact a:hover { color: white; }
+        .footer-socials { display: flex; gap: 14px; margin-top: 12px; }
+        .footer-socials a { color: rgba(255,255,255,0.6); font-size: 1.2rem; transition: var(--transition); }
+        .footer-socials a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            }
+            .nav-links.show { display: flex; }
+            .hamburger { display: flex; }
+            .page-header h1 { font-size: 1.8rem; }
+            .products-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .product-card img { height: 160px; }
+            .footer-container { grid-template-columns: 1fr; gap: 24px; }
+            .section-divider h2 { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .product-card { padding: 16px; }
+            .product-card img { height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🔮</span>
+            <span class="logo-text">Spiritual<span>Soul</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="readings.html"><i class="fas fa-hand-sparkles"></i> Readings</a></li>
+            <li><a href="about.html"><i class="fas fa-star"></i> About</a></li>
+            <li><a href="crystal.html" class="active"><i class="fas fa-gem"></i> Crystals</a></li>
+            <li><a href="testimonial.html"><i class="fas fa-heart"></i> Testimonials</a></li>
+        </ul>
+        <a href="booking.html" class="btn-nav"><i class="fas fa-calendar-check"></i> Book Now</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== CRYSTAL PAGE ===== -->
+<section class="crystal-page">
+    
+    <!-- Page Header -->
+    <div class="page-header">
+        <span class="page-badge">💎 Ifá Beads & Crystals</span>
+        <h1>Healing Bracelets & Guidance Crystals ❤️</h1>
+        <p>Protect your energy and attract what you desire</p>
+        <div class="emoji-line">🛐 🧿 🔮 ☮️ 🌅</div>
+    </div>
+
+    <!-- ===== SECTION 1: IFÁ BEADS COLLECTION ===== -->
+    <div class="section-divider">
+        <h2>📿 Ifá Beads Collection</h2>
+        <p>Traditional Ifá divination beads for spiritual protection and guidance</p>
+    </div>
+
+    <div class="products-grid">
+        
+        <!-- Ifá Bead 1: Hand Set -->
+        <div class="product-card">
+            <img src="assets/images/IMG_9088.jpeg" alt="Hand Set Ifá Beads" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">📿</span>
+            <h3>Hand Set Ifá Beads</h3>
+            <p class="desc">Traditional Ifá divination hand beads</p>
+            <span class="price">$30</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Ifá Bead 2: One Hand -->
+        <div class="product-card">
+            <img src="assets/images/IMG_9089.jpeg" alt="One Hand Ifá Beads" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">📿</span>
+            <h3>One Hand Ifá Beads</h3>
+            <p class="desc">Single hand Ifá divination beads</p>
+            <span class="price">$25</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Ifá Bead 3: Necklace -->
+        <div class="product-card featured">
+            <img src="assets/images/IMG_9091.jpeg" alt="Ifá Beads Necklace" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">📿</span>
+            <h3>Ifá Beads Necklace <span class="badge badge-popular">⭐ Popular</span></h3>
+            <p class="desc">Beautiful Ifá divination necklace</p>
+            <span class="price">$35</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Ifá Bead 4: Necklaces Set -->
+        <div class="product-card">
+            <img src="assets/images/IMG_9092.jpeg" alt="Necklaces Set Ifá Beads" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">📿</span>
+            <h3>Necklaces Set Ifá Beads</h3>
+            <p class="desc">Set of Ifá divination necklaces</p>
+            <span class="price">$45</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Ifá Bead 5: Full Handset -->
+        <div class="product-card featured">
+            <img src="assets/images/IMG_9093.jpeg" alt="Full Handset Ifá Beads" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">📿</span>
+            <h3>Full Handset Ifá Beads <span class="badge badge-best">⭐ Best Seller</span></h3>
+            <p class="desc">Complete full hand Ifá divination beads set</p>
+            <span class="price">$55</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2: HEALING CRYSTALS & BRACELETS ===== -->
+    <div class="section-divider">
+        <h2>🔮 Healing Crystals & Bracelets</h2>
+        <p>Protect your energy and attract what you desire</p>
+    </div>
+
+    <div class="products-grid">
+        
+        <!-- Protection Bracelet -->
+        <div class="product-card">
+            <img src="assets/images/IMG_9100.jpeg" alt="Protection Bracelet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">🛐</span>
+            <h3>Protection Bracelet</h3>
+            <p class="desc">Black Tourmaline + Obsidian — shields against negative energy</p>
+            <span class="price">$22</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Guidance Crystal -->
+        <div class="product-card">
+            <img src="assets/images/IMG_9101.jpeg" alt="Guidance Crystal" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">🧿</span>
+            <h3>Guidance Crystal</h3>
+            <p class="desc">Amethyst + Clear Quartz — enhances intuition and connection</p>
+            <span class="price">$28</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Healing Bracelet -->
+        <div class="product-card">
+            <img src="assets/images/IMG_9102.jpeg" alt="Healing Bracelet" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">🔮</span>
+            <h3>Healing Bracelet</h3>
+            <p class="desc">Rose Quartz + Green Aventurine — promotes emotional healing and love</p>
+            <span class="price">$25</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Peace Bundle -->
+        <div class="product-card">
+            <img src="assets/images/IMG_7800.jpeg" alt="Peace Bundle" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">☮️</span>
+            <h3>Peace Bundle</h3>
+            <p class="desc">Selenite + Lapis Lazuli — brings peace, clarity, and calm</p>
+            <span class="price">$35</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- Full Protection Set -->
+        <div class="product-card featured">
+            <img src="assets/images/IMG_9104.jpeg" alt="Full Protection Set" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">🌅</span>
+            <h3>Full Protection Set <span class="badge badge-save">Save $25!</span></h3>
+            <p class="desc">All 4 bracelets + crystal — complete spiritual protection bundle</p>
+            <span class="price">$85</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+
+        <!-- ===== NEW PRODUCT: Protection Oil ===== -->
+        <div class="product-card featured">
+            <img src="assets/images/IMG_9131.jpeg" alt="Protection Oil" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <span class="icon" style="display: none;">🪔</span>
+            <h3>Protection Oil <span class="badge badge-new">🆕 New</span></h3>
+            <p class="desc">Anointed protection oil for spiritual cleansing and energy shielding</p>
+            <span class="price">$100</span>
+            <a href="booking.html" class="btn-add">Add to Cart</a>
+        </div>
+    </div>
+
+    <!-- Note -->
+    <div class="crystals-note">
+        <p><i class="fas fa-moon"></i> All crystals, beads, and oils are cleansed and charged under the full moon before shipping, love ❤️</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">📦 Worldwide shipping available</p>
+        <p style="font-size: 0.8rem; color: var(--primary); margin-top: 4px;">🙏 Custom Ifá bead sets available upon request</p>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <span class="footer-logo">🔮 Spiritual Soul</span>
+            <p>Sending positive energy to you if you need healing, love ❤️</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="readings.html">Readings</a>
+            <a href="about.html">About</a>
+            <a href="crystal.html">Crystals</a>
+            <a href="testimonial.html">Testimonials</a>
+            <a href="booking.html">Book Now</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Spiritual Soul — Made with love ❤️🛐🧿🔮☮️🌅</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+</script>
+</body>
+</html>
