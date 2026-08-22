@@ -131,24 +131,34 @@
             color: var(--gold);
         }
         
-        /* ===== TEXT SLIDESHOW ===== */
+        /* ===== TEXT SLIDESHOW - FIXED ===== */
         .text-slideshow {
             position: relative;
-            height: 80px;
+            height: 90px;
             overflow: hidden;
+            background: rgba(255, 248, 240, 0.6);
+            border-radius: 16px;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
         .text-slideshow .ts-slide {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
+            text-align: center;
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             font-weight: 900;
             color: var(--text-dark);
-            line-height: 1.1;
+            line-height: 1.2;
             opacity: 0;
-            transition: opacity 1s ease;
+            transition: opacity 0.8s ease;
+            padding: 0 10px;
         }
         .text-slideshow .ts-slide span { color: var(--primary); }
         .text-slideshow .ts-slide.active { opacity: 1; }
@@ -505,7 +515,7 @@
             .slideshow-container { max-width: 100%; height: 320px; }
             .steps-grid { grid-template-columns: 1fr 1fr; }
             .why-grid { grid-template-columns: 1fr 1fr; }
-            .text-slideshow { height: 70px; }
+            .text-slideshow { height: 75px; }
             .text-slideshow .ts-slide { font-size: 3rem; }
         }
         @media (max-width: 768px) {
@@ -523,7 +533,7 @@
             }
             .nav-links.show { display: flex; }
             .hamburger { display: flex; }
-            .text-slideshow { height: 60px; }
+            .text-slideshow { height: 65px; }
             .text-slideshow .ts-slide { font-size: 2.5rem; }
             .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
             .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
@@ -538,8 +548,8 @@
             .trust-badges { gap: 20px; }
         }
         @media (max-width: 480px) {
-            .text-slideshow { height: 50px; }
-            .text-slideshow .ts-slide { font-size: 2rem; }
+            .text-slideshow { height: 55px; }
+            .text-slideshow .ts-slide { font-size: 1.9rem; }
         }
     </style>
 </head>
@@ -571,7 +581,7 @@
         <span class="hero-badge">✨ Your Light is Calling</span>
         <span class="greeting">Welcome, Love ❤️</span>
         
-        <!-- TEXT SLIDESHOW -->
+        <!-- TEXT SLIDESHOW - FIXED -->
         <div class="text-slideshow">
             <div class="ts-slide active">Find Peace, <span>Love</span> & Purpose</div>
             <div class="ts-slide">Trust Your <span>Journey</span></div>
