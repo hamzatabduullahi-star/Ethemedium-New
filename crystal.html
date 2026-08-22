@@ -17,8 +17,6 @@
         .nav-links{display:flex;list-style:none;gap:30px;align-items:center;}
         .nav-links a{font-size:0.9rem;font-weight:500;color:#8A7A7A;transition:all 0.3s;display:flex;align-items:center;gap:6px;text-decoration:none;}
         .nav-links a:hover,.nav-links a.active{color:#6B2D5C;font-weight:600;}
-        .btn-primary{background:#6B2D5C;color:white;padding:10px 24px;border-radius:50px;font-weight:600;font-size:0.85rem;transition:all 0.3s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border:none;cursor:pointer;}
-        .btn-primary:hover{background:#8B4D7A;transform:translateY(-2px);box-shadow:0 8px 32px rgba(107,45,92,0.15);}
         .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
         .hamburger span{width:25px;height:3px;background:#6B2D5C;border-radius:3px;transition:all 0.3s;}
 
@@ -83,6 +81,7 @@
         .badge-popular{background:#C9A84C;}
         .badge-best{background:#E8798A;}
         .badge-new{background:#6B2D5C;}
+        .badge-save{background:#2d7a5a;}
         .crystals-note{text-align:center;margin-top:30px;padding:20px;background:#FAF5F5;border-radius:12px;border:1px solid #F0E0E0;}
         .crystals-note p{color:#6B2D5C;font-size:0.95rem;margin:0;}
         .crystals-note i{margin-right:8px;}
@@ -176,7 +175,6 @@
                 <i class="fas fa-shopping-cart"></i>
                 <span class="cart-badge" id="cartBadge">0</span>
             </div>
-            <a href="booking.html" class="btn-primary"><i class="fas fa-calendar-check"></i> Book Now</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">
             <span></span><span></span><span></span>
@@ -192,31 +190,101 @@
         <div class="emoji-line">🛐 🧿 🔮 ☮️ 🌅</div>
     </div>
 
+    <!-- ===== SECTION 1: IFÁ BEADS COLLECTION ===== -->
     <div class="section-divider">
         <h2>📿 Ifá Beads Collection</h2>
         <p>Traditional Ifá divination beads for spiritual protection and guidance</p>
     </div>
 
-    <div class="product-card"><img src="assets/images/IMG_9088.jpeg" alt="Hand Set Ifá Beads"><h3>Hand Set Ifá Beads</h3><p class="desc">Traditional Ifá divination hand beads</p><span class="price" data-usd="30">$30</span><button class="btn-add" onclick="addToCart('Hand Set Ifá Beads', 30)">🛒 Add to Cart</button></div>
-    <div class="product-card"><img src="assets/images/IMG_9089.jpeg" alt="One Hand Ifá Beads"><h3>One Hand Ifá Beads</h3><p class="desc">Single hand Ifá divination beads</p><span class="price" data-usd="25">$25</span><button class="btn-add" onclick="addToCart('One Hand Ifá Beads', 25)">🛒 Add to Cart</button></div>
-    <div class="product-card featured"><img src="assets/images/IMG_9091.jpeg" alt="Ifá Beads Necklace"><h3>Ifá Beads Necklace <span class="badge badge-popular">⭐ Popular</span></h3><p class="desc">Beautiful Ifá divination necklace</p><span class="price" data-usd="35">$35</span><button class="btn-add" onclick="addToCart('Ifá Beads Necklace', 35)">🛒 Add to Cart</button></div>
-    <div class="product-card"><img src="assets/images/IMG_9092.jpeg" alt="Necklaces Set Ifá Beads"><h3>Necklaces Set Ifá Beads</h3><p class="desc">Set of Ifá divination necklaces</p><span class="price" data-usd="45">$45</span><button class="btn-add" onclick="addToCart('Necklaces Set Ifá Beads', 45)">🛒 Add to Cart</button></div>
-    <div class="product-card featured"><img src="assets/images/IMG_9093.jpeg" alt="Full Handset Ifá Beads"><h3>Full Handset Ifá Beads <span class="badge badge-best">⭐ Best Seller</span></h3><p class="desc">Complete full hand Ifá divination beads set</p><span class="price" data-usd="55">$55</span><button class="btn-add" onclick="addToCart('Full Handset Ifá Beads', 55)">🛒 Add to Cart</button></div>
+    <div class="product-card">
+        <img src="IMG_9088.jpeg" alt="Hand Set Ifá Beads" onerror="this.style.display='none';">
+        <h3>Hand Set Ifá Beads</h3>
+        <p class="desc">Traditional Ifá divination hand beads</p>
+        <span class="price" data-usd="30">$30</span>
+        <button class="btn-add" onclick="addToCart('Hand Set Ifá Beads', 30)">🛒 Add to Cart</button>
+    </div>
 
+    <div class="product-card">
+        <img src="IMG_9089.jpeg" alt="One Hand Ifá Beads" onerror="this.style.display='none';">
+        <h3>One Hand Ifá Beads</h3>
+        <p class="desc">Single hand Ifá divination beads</p>
+        <span class="price" data-usd="25">$25</span>
+        <button class="btn-add" onclick="addToCart('One Hand Ifá Beads', 25)">🛒 Add to Cart</button>
+    </div>
+
+    <div class="product-card featured">
+        <img src="IMG_9091.jpeg" alt="Ifá Beads Necklace" onerror="this.style.display='none';">
+        <h3>Ifá Beads Necklace <span class="badge badge-popular">⭐ Popular</span></h3>
+        <p class="desc">Beautiful Ifá divination necklace</p>
+        <span class="price" data-usd="35">$35</span>
+        <button class="btn-add" onclick="addToCart('Ifá Beads Necklace', 35)">🛒 Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="IMG_9092.jpeg" alt="Necklaces Set Ifá Beads" onerror="this.style.display='none';">
+        <h3>Necklaces Set Ifá Beads</h3>
+        <p class="desc">Set of Ifá divination necklaces</p>
+        <span class="price" data-usd="45">$45</span>
+        <button class="btn-add" onclick="addToCart('Necklaces Set Ifá Beads', 45)">🛒 Add to Cart</button>
+    </div>
+
+    <div class="product-card featured">
+        <img src="IMG_9093.jpeg" alt="Full Handset Ifá Beads" onerror="this.style.display='none';">
+        <h3>Full Handset Ifá Beads <span class="badge badge-best">⭐ Best Seller</span></h3>
+        <p class="desc">Complete full hand Ifá divination beads set</p>
+        <span class="price" data-usd="55">$55</span>
+        <button class="btn-add" onclick="addToCart('Full Handset Ifá Beads', 55)">🛒 Add to Cart</button>
+    </div>
+
+    <!-- ===== SECTION 2: HEALING CRYSTALS & BRACELETS ===== -->
     <div class="section-divider">
         <h2>🔮 Healing Crystals & Bracelets</h2>
         <p>Protect your energy and attract what you desire</p>
     </div>
 
-    <div class="product-card"><img src="assets/images/IMG_9100.jpeg" alt="Protection Bracelet"><h3>Protection Bracelet</h3><p class="desc">Black Tourmaline + Obsidian — shields against negative energy</p><span class="price" data-usd="22">$22</span><button class="btn-add" onclick="addToCart('Protection Bracelet', 22)">🛒 Add to Cart</button></div>
-    <div class="product-card"><img src="assets/images/IMG_9101.jpeg" alt="Guidance Crystal"><h3>Guidance Crystal</h3><p class="desc">Amethyst + Clear Quartz — enhances intuition</p><span class="price" data-usd="28">$28</span><button class="btn-add" onclick="addToCart('Guidance Crystal', 28)">🛒 Add to Cart</button></div>
-    <div class="product-card"><img src="assets/images/IMG_9102.jpeg" alt="Healing Bracelet"><h3>Healing Bracelet</h3><p class="desc">Rose Quartz + Green Aventurine — emotional healing</p><span class="price" data-usd="25">$25</span><button class="btn-add" onclick="addToCart('Healing Bracelet', 25)">🛒 Add to Cart</button></div>
-    <div class="product-card"><img src="assets/images/IMG_7800.jpeg" alt="Peace Bundle"><h3>Peace Bundle</h3><p class="desc">Selenite + Lapis Lazuli — peace and clarity</p><span class="price" data-usd="35">$35</span><button class="btn-add" onclick="addToCart('Peace Bundle', 35)">🛒 Add to Cart</button></div>
-    <div class="product-card featured"><img src="assets/images/IMG_9104.jpeg" alt="Full Protection Set"><h3>Full Protection Set <span class="badge badge-popular">Save $25!</span></h3><p class="desc">All 4 bracelets + crystal — complete protection</p><span class="price" data-usd="85">$85</span><button class="btn-add" onclick="addToCart('Full Protection Set', 85)">🛒 Add to Cart</button></div>
+    <div class="product-card">
+        <img src="IMG_9100.jpeg" alt="Protection Bracelet" onerror="this.style.display='none';">
+        <h3>Protection Bracelet</h3>
+        <p class="desc">Black Tourmaline + Obsidian — shields against negative energy</p>
+        <span class="price" data-usd="22">$22</span>
+        <button class="btn-add" onclick="addToCart('Protection Bracelet', 22)">🛒 Add to Cart</button>
+    </div>
 
-    <!-- ===== NEW PRODUCT: Protection Oil ===== -->
+    <div class="product-card">
+        <img src="IMG_9101.jpeg" alt="Guidance Crystal" onerror="this.style.display='none';">
+        <h3>Guidance Crystal</h3>
+        <p class="desc">Amethyst + Clear Quartz — enhances intuition</p>
+        <span class="price" data-usd="28">$28</span>
+        <button class="btn-add" onclick="addToCart('Guidance Crystal', 28)">🛒 Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="IMG_9102.jpeg" alt="Healing Bracelet" onerror="this.style.display='none';">
+        <h3>Healing Bracelet</h3>
+        <p class="desc">Rose Quartz + Green Aventurine — emotional healing</p>
+        <span class="price" data-usd="25">$25</span>
+        <button class="btn-add" onclick="addToCart('Healing Bracelet', 25)">🛒 Add to Cart</button>
+    </div>
+
+    <div class="product-card">
+        <img src="IMG_7800.jpeg" alt="Peace Bundle" onerror="this.style.display='none';">
+        <h3>Peace Bundle</h3>
+        <p class="desc">Selenite + Lapis Lazuli — peace and clarity</p>
+        <span class="price" data-usd="35">$35</span>
+        <button class="btn-add" onclick="addToCart('Peace Bundle', 35)">🛒 Add to Cart</button>
+    </div>
+
     <div class="product-card featured">
-        <img src="assets/images/IMG_9131.jpeg" alt="Protection Oil" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <img src="IMG_9104.jpeg" alt="Full Protection Set" onerror="this.style.display='none';">
+        <h3>Full Protection Set <span class="badge badge-save">Save $25!</span></h3>
+        <p class="desc">All 4 bracelets + crystal — complete protection</p>
+        <span class="price" data-usd="85">$85</span>
+        <button class="btn-add" onclick="addToCart('Full Protection Set', 85)">🛒 Add to Cart</button>
+    </div>
+
+    <!-- ===== NEW: Protection Oil ===== -->
+    <div class="product-card featured">
+        <img src="IMG_9131.jpeg" alt="Protection Oil" onerror="this.style.display='none';">
         <h3>Protection Oil <span class="badge badge-new">🆕 New</span></h3>
         <p class="desc">Anointed protection oil for spiritual cleansing and energy shielding</p>
         <span class="price" data-usd="100">$100</span>
