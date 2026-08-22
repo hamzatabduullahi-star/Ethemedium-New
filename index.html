@@ -16,7 +16,6 @@
             min-height: 100vh; 
         }
         
-        /* ===== WARM SUNSET/GOLD THEME ===== */
         :root {
             --primary: #C97B3A;
             --primary-light: #E0955A;
@@ -33,7 +32,6 @@
             --transition: all 0.3s ease;
         }
         
-        /* ===== NAVIGATION ===== */
         .navbar {
             position: fixed;
             top: 0;
@@ -104,7 +102,6 @@
             transition: var(--transition);
         }
         
-        /* ===== HERO ===== */
         .hero {
             padding: 110px 24px 60px;
             max-width: 1200px;
@@ -194,7 +191,6 @@
             transform: translateY(-3px);
         }
         
-        /* ===== SLIDESHOW ===== */
         .slideshow-container {
             width: 100%;
             max-width: 450px;
@@ -251,11 +247,10 @@
         .slide-dot.active { background: white; transform: scale(1.2); }
         .slide-dot:hover { background: rgba(255,255,255,0.8); }
         
-        /* ===== TRUST BADGES ===== */
         .trust-badges {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 24px 20px;
+            padding: 20px 24px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -272,11 +267,10 @@
         }
         .trust-item i { color: var(--gold); font-size: 1.2rem; }
         
-        /* ===== HOW IT WORKS ===== */
         .how-it-works {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 50px 24px 60px;
+            padding: 40px 24px 50px;
             text-align: center;
         }
         .how-it-works .section-label {
@@ -343,62 +337,9 @@
             line-height: 1.6;
         }
         
-        /* ===== POPULAR READINGS ===== */
-        .popular-readings {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 24px 60px;
-            text-align: center;
-        }
-        .popular-readings .section-label {
-            display: inline-block;
-            background: var(--gold-light);
-            color: var(--primary-dark);
-            padding: 4px 18px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .popular-readings h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--text-dark);
-        }
-        .popular-readings .sub {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        .readings-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .reading-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 24px 16px;
-            text-align: center;
-            border: 1px solid rgba(212, 168, 76, 0.1);
-            transition: var(--transition);
-        }
-        .reading-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--gold);
-        }
-        .reading-card .icon { font-size: 2.5rem; display: block; margin-bottom: 8px; }
-        .reading-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-dark); }
-        .reading-card p { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
-        .reading-card .price { font-weight: 700; color: var(--primary); font-size: 0.9rem; display: block; margin-top: 6px; }
-        
-        /* ===== WHY CHOOSE ME ===== */
         .why-choose {
             background: var(--white);
-            padding: 50px 24px 60px;
+            padding: 40px 24px 50px;
             border-top: 1px solid rgba(212, 168, 76, 0.1);
             border-bottom: 1px solid rgba(212, 168, 76, 0.1);
         }
@@ -437,7 +378,6 @@
         .why-item h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-dark); }
         .why-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
         
-        /* ===== QR CODE ===== */
         .qr-section {
             max-width: 1000px;
             margin: 0 auto;
@@ -487,7 +427,6 @@
         }
         .qr-features i { color: var(--primary); width: 22px; }
         
-        /* ===== FOOTER ===== */
         .footer {
             background: var(--primary-dark);
             color: rgba(255,255,255,0.85);
@@ -543,7 +482,6 @@
             .hero-content .subtitle { max-width: 100%; }
             .slideshow-container { max-width: 100%; height: 320px; }
             .steps-grid { grid-template-columns: 1fr 1fr; }
-            .readings-grid { grid-template-columns: 1fr 1fr; }
             .why-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
@@ -571,7 +509,6 @@
             .slide h3 { font-size: 1.4rem; }
             .slide .slide-icon { font-size: 2.8rem; }
             .steps-grid { grid-template-columns: 1fr; }
-            .readings-grid { grid-template-columns: 1fr; }
             .why-grid { grid-template-columns: 1fr; }
             .trust-badges { gap: 20px; }
         }
@@ -678,39 +615,6 @@
     </div>
 </section>
 
-<!-- ===== POPULAR READINGS ===== -->
-<section class="popular-readings">
-    <span class="section-label">🔮 Most Popular</span>
-    <h2>Choose Your Reading</h2>
-    <p class="sub">Pick the guidance your soul needs</p>
-    <div class="readings-grid">
-        <div class="reading-card">
-            <span class="icon">💖</span>
-            <h4>Love Reading</h4>
-            <p>Soulmate, twin flame</p>
-            <span class="price">From $45</span>
-        </div>
-        <div class="reading-card">
-            <span class="icon">💼</span>
-            <h4>Career Reading</h4>
-            <p>Path, promotions, purpose</p>
-            <span class="price">From $55</span>
-        </div>
-        <div class="reading-card">
-            <span class="icon">🕊️</span>
-            <h4>Healing Reading</h4>
-            <p>Anxiety, inner peace</p>
-            <span class="price">From $70</span>
-        </div>
-        <div class="reading-card">
-            <span class="icon">🔮</span>
-            <h4>General Reading</h4>
-            <p>Whatever Spirit brings</p>
-            <span class="price">From $40</span>
-        </div>
-    </div>
-</section>
-
 <!-- ===== WHY CHOOSE ME ===== -->
 <section class="why-choose">
     <div class="container">
@@ -796,7 +700,6 @@
 </footer>
 
 <script>
-    // ===== SLIDESHOW =====
     let slideIndex = 0;
     let slideTimer;
 
