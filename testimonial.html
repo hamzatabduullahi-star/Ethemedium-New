@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🔮 Spiritual Soul — Testimonials</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); 
+            font-family: 'Inter', sans-serif; 
+            min-height: 100vh; 
+        }
+        
+        :root {
+            --primary: #C97B3A;
+            --primary-light: #E0955A;
+            --primary-dark: #A8622A;
+            --gold: #D4A84C;
+            --gold-light: #F0DC8A;
+            --text-dark: #3D2A1A;
+            --text-muted: #8A7A6A;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.12);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.2);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            z-index: 1000;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+        .nav-logo .logo-icon { font-size: 1.6rem; }
+        .nav-logo .logo-text span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* ===== TESTIMONIALS PAGE ===== */
+        .page-section {
+            padding: 100px 24px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .page-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-top: 6px;
+        }
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+        .global-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .global-badge i { margin-right: 8px; }
+        
+        .flags-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 20px 0 30px;
+        }
+        .flags-bar span {
+            font-size: 1.6rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            transition: var(--transition);
+        }
+        .flags-bar span:hover {
+            transform: scale(1.2);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(212, 168, 76, 0.12);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+        .testimonial-card .stars {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--gold);
+        }
+        .testimonial-card p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .testimonial-card .author {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial-card .author .name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+        .testimonial-card .author .location {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .testimonial-card .author .flag {
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+        
+        /* ===== CTA ===== */
+        .testimonials-cta {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px 24px;
+            background: linear-gradient(135deg, #FFFBF5, #FFF5E6);
+            border-radius: var(--radius);
+            border: 2px solid rgba(212, 168, 76, 0.2);
+        }
+        .testimonials-cta .cta-emoji-line {
+            font-size: 1.6rem;
+            letter-spacing: 8px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .testimonials-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+        }
+        .testimonials-cta p {
+            color: var(--text-muted);
+            margin: 6px 0 16px;
+        }
+        .btn-cta {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cta:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .btn-cta i { margin-right: 8px; }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.85);
+            padding: 40px 24px 20px;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.7; }
+        .footer-links h4, .footer-contact h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+        .footer-links a, .footer-contact a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            padding: 4px 0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover, .footer-contact a:hover { color: white; }
+        .footer-socials { display: flex; gap: 14px; margin-top: 12px; }
+        .footer-socials a { color: rgba(255,255,255,0.6); font-size: 1.2rem; transition: var(--transition); }
+        .footer-socials a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            }
+            .nav-links.show { display: flex; }
+            .hamburger { display: flex; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 1.8rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 24px; }
+            .flags-bar span { font-size: 1.4rem; }
+        }
+        @media (max-width: 480px) {
+            .testimonial-card { padding: 18px; }
+            .flags-bar span { font-size: 1.2rem; }
+            .testimonials-cta h3 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🔮</span>
+            <span class="logo-text">Spiritual<span>Soul</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="readings.html"><i class="fas fa-hand-sparkles"></i> Readings</a></li>
+            <li><a href="about.html"><i class="fas fa-star"></i> About</a></li>
+            <li><a href="crystal.html"><i class="fas fa-gem"></i> Crystals</a></li>
+            <li><a href="testimonial.html" class="active"><i class="fas fa-heart"></i> Testimonials</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== TESTIMONIALS PAGE ===== -->
+<section class="page-section">
+    <div class="page-header">
+        <span class="page-badge">💬 What Clients Say</span>
+        <h1>Real Words From Real Souls ❤️</h1>
+        <p>Read what people from around the world have experienced</p>
+        <div class="global-badge">
+            <i class="fas fa-globe"></i> Trusted by clients in 20+ countries
+        </div>
+    </div>
+
+    <!-- Flags Bar -->
+    <div class="flags-bar">
+        <span>🇺🇸</span> <span>🇬🇧</span> <span>🇨🇦</span> <span>🇦🇺</span>
+        <span>🇩🇪</span> <span>🇫🇷</span> <span>🇮🇹</span> <span>🇪🇸</span>
+        <span>🇳🇱</span> <span>🇸🇪</span> <span>🇯🇵</span> <span>🇨🇳</span>
+        <span>🇮🇳</span> <span>🇲🇽</span> <span>🇦🇷</span> <span>🇹🇷</span>
+        <span>🇷🇺</span> <span>🇰🇷</span> <span>🇸🇬</span> <span>🇲🇾</span>
+        <span>🇵🇭</span> <span>🇻🇳</span> <span>🇹🇭</span> <span>🇵🇱</span>
+    </div>
+
+    <div class="testimonials-grid">
+        <!-- 1. USA -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"She helped me heal my heart after a painful breakup. Her reading was so accurate, I cried. Thank you, love! ❤️"</p>
+            <div class="author">
+                <span class="name">Sarah M.</span>
+                <span class="location">📍 New York, USA</span>
+                <span class="flag">🇺🇸</span>
+            </div>
+        </div>
+
+        <!-- 2. UK -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"I was lost in my career and didn't know what to do. Her guidance gave me the clarity I needed. I got promoted 2 months later!"</p>
+            <div class="author">
+                <span class="name">James R.</span>
+                <span class="location">📍 London, UK</span>
+                <span class="flag">🇬🇧</span>
+            </div>
+        </div>
+
+        <!-- 3. Canada -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"The energy healing session was incredible. I felt so much lighter and at peace. I've been recommending her to everyone."</p>
+            <div class="author">
+                <span class="name">Chioma O.</span>
+                <span class="location">📍 Toronto, Canada</span>
+                <span class="flag">🇨🇦</span>
+            </div>
+        </div>
+
+        <!-- 4. Australia -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her reading about my future was so on point. Everything she predicted came true within 6 months. I'm forever grateful!"</p>
+            <div class="author">
+                <span class="name">Emily W.</span>
+                <span class="location">📍 Sydney, Australia</span>
+                <span class="flag">🇦🇺</span>
+            </div>
+        </div>
+
+        <!-- 5. Germany -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"I was struggling with anxiety and depression. Her healing reading gave me so much peace. I feel like a new person!"</p>
+            <div class="author">
+                <span class="name">Anna K.</span>
+                <span class="location">📍 Berlin, Germany</span>
+                <span class="flag">🇩🇪</span>
+            </div>
+        </div>
+
+        <!-- 6. France -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"She connected with my spirit guides so clearly. The messages were exactly what I needed to hear. Merci beaucoup!"</p>
+            <div class="author">
+                <span class="name">Jean-Pierre L.</span>
+                <span class="location">📍 Paris, France</span>
+                <span class="flag">🇫🇷</span>
+            </div>
+        </div>
+
+        <!-- 7. Italy -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her intuitive guidance helped me make the biggest decision of my life. I am so grateful for her wisdom. Grazie mille!"</p>
+            <div class="author">
+                <span class="name">Marco R.</span>
+                <span class="location">📍 Rome, Italy</span>
+                <span class="flag">🇮🇹</span>
+            </div>
+        </div>
+
+        <!-- 8. Spain -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her relationship reading was so powerful. She helped me understand my partner's energy and we are stronger than ever. ¡Increíble!"</p>
+            <div class="author">
+                <span class="name">Carmen G.</span>
+                <span class="location">📍 Madrid, Spain</span>
+                <span class="flag">🇪🇸</span>
+            </div>
+        </div>
+
+        <!-- 9. Japan -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"I was hesitant at first, but her reading was so accurate. She knew things about me that I never told anyone. Arigato!"</p>
+            <div class="author">
+                <span class="name">Yuki T.</span>
+                <span class="location">📍 Tokyo, Japan</span>
+                <span class="flag">🇯🇵</span>
+            </div>
+        </div>
+
+        <!-- 10. India -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her spiritual reading helped me connect with my higher self. I've never felt more aligned with my purpose. Dhanyavaad!"</p>
+            <div class="author">
+                <span class="name">Priya S.</span>
+                <span class="location">📍 Mumbai, India</span>
+                <span class="flag">🇮🇳</span>
+            </div>
+        </div>
+
+        <!-- 11. Mexico -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her aura reading was so detailed. She described my energy perfectly and gave me tools to balance my chakras. ¡Increíble!"</p>
+            <div class="author">
+                <span class="name">Carlos M.</span>
+                <span class="location">📍 Mexico City, Mexico</span>
+                <span class="flag">🇲🇽</span>
+            </div>
+        </div>
+
+        <!-- 12. Singapore -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her general reading was exactly what I needed to hear. It gave me hope and direction. Thank you, love!"</p>
+            <div class="author">
+                <span class="name">Mei L.</span>
+                <span class="location">📍 Singapore</span>
+                <span class="flag">🇸🇬</span>
+            </div>
+        </div>
+
+        <!-- 13. Netherlands -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her finance reading opened my eyes to opportunities I was missing. I've already seen positive changes in my business. Dank je!"</p>
+            <div class="author">
+                <span class="name">Pieter V.</span>
+                <span class="location">📍 Amsterdam, Netherlands</span>
+                <span class="flag">🇳🇱</span>
+            </div>
+        </div>
+
+        <!-- 14. Sweden -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her protection reading was a game changer. I felt negative energy leave my space immediately. Highly recommend! Tack!"</p>
+            <div class="author">
+                <span class="name">Erik L.</span>
+                <span class="location">📍 Stockholm, Sweden</span>
+                <span class="flag">🇸🇪</span>
+            </div>
+        </div>
+
+        <!-- 15. Poland -->
+        <div class="testimonial-card">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Her love reading helped me understand my soulmate connection. I finally have clarity and peace in my heart. Dziękuję!"</p>
+            <div class="author">
+                <span class="name">Agnieszka K.</span>
+                <span class="location">📍 Warsaw, Poland</span>
+                <span class="flag">🇵🇱</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CTA ===== -->
+    <div class="testimonials-cta">
+        <span class="cta-emoji-line">🛐 🧿 🔮 ☮️ 🌅</span>
+        <h3>Ready to Experience It Yourself?</h3>
+        <p>Book your reading today and discover what the universe has to say to you</p>
+        <a href="booking.html" class="btn-cta">
+            <i class="fas fa-hand-sparkles"></i> Book Your Reading Now
+        </a>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <span class="footer-logo">🔮 Spiritual Soul</span>
+            <p>Sending positive energy to you if you need healing, love ❤️</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="readings.html">Readings</a>
+            <a href="about.html">About</a>
+            <a href="crystal.html">Crystals</a>
+            <a href="testimonial.html">Testimonials</a>
+            <a href="booking.html">Book Now</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Spiritual Soul — Made with love ❤️🛐🧿🔮☮️🌅</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+</script>
+</body>
+</html>
