@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🔮 Spiritual Soul — About</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); 
+            font-family: 'Inter', sans-serif; 
+            min-height: 100vh; 
+        }
+        
+        :root {
+            --primary: #C97B3A;
+            --primary-light: #E0955A;
+            --primary-dark: #A8622A;
+            --gold: #D4A84C;
+            --gold-light: #F0DC8A;
+            --text-dark: #3D2A1A;
+            --text-muted: #8A7A6A;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.15);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.25);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        /* ===== NAVIGATION ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            z-index: 1000;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        .nav-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+        .nav-logo .logo-icon { font-size: 1.6rem; }
+        .nav-logo .logo-text span { color: var(--gold); }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* ===== ABOUT PAGE ===== */
+        .about-page {
+            padding: 100px 24px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .about-container {
+            background: rgba(255, 248, 245, 0.92);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(201, 123, 58, 0.12);
+            border: 1px solid rgba(212, 168, 76, 0.15);
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .about-badge {
+            display: inline-block;
+            background: var(--gold-light);
+            color: var(--primary-dark);
+            padding: 4px 18px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .about-header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-top: 6px;
+            font-weight: 400;
+        }
+        .about-header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .about-image {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .about-image-placeholder {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            box-shadow: 0 8px 30px rgba(201, 123, 58, 0.2);
+        }
+        .about-image-placeholder span { display: block; }
+
+        .about-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+        .about-content .intro {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--primary);
+            border-left: 3px solid var(--gold);
+            padding-left: 18px;
+            margin-bottom: 18px;
+        }
+        .about-content p {
+            margin-bottom: 16px;
+        }
+        .about-content .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 28px 0;
+        }
+        .stat-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(212, 168, 76, 0.1);
+            transition: var(--transition);
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: var(--gold);
+        }
+        .stat-number {
+            display: block;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--primary);
+        }
+        .stat-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-cta {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .btn-about-primary {
+            background: var(--primary);
+            color: white;
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-about-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .btn-about-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+        }
+        .btn-about-secondary:hover {
+            background: var(--gold-light);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .about-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed rgba(212, 168, 76, 0.25);
+        }
+        .about-footer .emoji-line {
+            font-size: 1.6rem;
+            letter-spacing: 8px;
+        }
+        .about-footer .quote {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-top: 4px;
+            font-weight: 400;
+        }
+        .about-footer .quote-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.85);
+            padding: 40px 24px 20px;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: white;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.7; }
+        .footer-links h4, .footer-contact h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
+        .footer-links a, .footer-contact a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            padding: 4px 0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover, .footer-contact a:hover { color: white; }
+        .footer-socials { display: flex; gap: 14px; margin-top: 12px; }
+        .footer-socials a { color: rgba(255,255,255,0.6); font-size: 1.2rem; transition: var(--transition); }
+        .footer-socials a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(212, 168, 76, 0.15);
+            }
+            .nav-links.show { display: flex; }
+            .hamburger { display: flex; }
+            .about-container { padding: 24px; }
+            .about-header h1 { font-size: 2.5rem; }
+            .about-stats { grid-template-columns: repeat(2, 1fr); }
+            .footer-container { grid-template-columns: 1fr; gap: 20px; }
+        }
+        @media (max-width: 480px) {
+            .about-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .stat-card { padding: 14px; }
+            .stat-number { font-size: 1.6rem; }
+            .about-cta { flex-direction: column; align-items: center; }
+            .btn-about-primary, .btn-about-secondary { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🔮</span>
+            <span class="logo-text">Spiritual<span>Soul</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="readings.html"><i class="fas fa-hand-sparkles"></i> Readings</a></li>
+            <li><a href="about.html" class="active"><i class="fas fa-star"></i> About</a></li>
+            <li><a href="crystal.html"><i class="fas fa-gem"></i> Crystals</a></li>
+            <li><a href="testimonial.html"><i class="fas fa-heart"></i> Testimonials</a></li>
+        </ul>
+        <!-- REMOVED Book Now button -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== ABOUT PAGE ===== -->
+<section class="about-page">
+    <div class="about-container">
+
+        <!-- Header -->
+        <div class="about-header">
+            <span class="about-badge">🌟 About Me</span>
+            <h1>I'm Here to Guide You</h1>
+            <p class="subtitle">✨ Your trusted spiritual guide with years of experience ✨</p>
+        </div>
+
+        <!-- Image -->
+        <div class="about-image">
+            <div class="about-image-placeholder">
+                <span>🔮</span>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="about-content">
+            <p class="intro">
+                <i class="fas fa-heart" style="color:#E8798A;"></i> 
+                With years of experience in spiritual guidance, I help people find clarity, 
+                healing, and direction in their lives. Whether you're struggling with love, 
+                career, or just need a sign from the universe — I'm here for you.
+            </p>
+            
+            <p>
+                I've had the honor of reading for clients from all over the world — 
+                from the <span class="highlight">United States</span> and 
+                <span class="highlight">Canada</span> to the 
+                <span class="highlight">United Kingdom</span>, 
+                <span class="highlight">Australia</span>, 
+                <span class="highlight">Germany</span>, 
+                <span class="highlight">France</span>, and beyond. 
+                No matter where you are, the energy connects us all.
+            </p>
+            
+            <p>
+                My journey into spirituality began over 7 years ago, and since then, 
+                I've helped over <span class="highlight">500 clients</span> find peace, 
+                clarity, and purpose. Every reading is unique, personal, and guided by Spirit.
+            </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="about-stats">
+            <div class="stat-card">
+                <span class="stat-number">7+</span>
+                <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Readings Done</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Countries Served</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Confidential</span>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="about-cta">
+            <a href="booking.html" class="btn-about-primary">
+                <i class="fas fa-heart"></i> Book a Session
+            </a>
+            <a href="readings.html" class="btn-about-secondary">
+                <i class="fas fa-hand-sparkles"></i> View Readings
+            </a>
+        </div>
+
+        <!-- Footer Quote -->
+        <div class="about-footer">
+            <div class="emoji-line">🛐 🧿 🔮 ☮️ 🌅</div>
+            <div class="quote">"Sending positive energy to you if you need healing, love ❤️"</div>
+            <p class="quote-sub">— Spiritual Soul</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <span class="footer-logo">🔮 Spiritual Soul</span>
+            <p>Sending positive energy to you if you need healing, love ❤️</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <a href="index.html">Home</a>
+            <a href="readings.html">Readings</a>
+            <a href="about.html">About</a>
+            <a href="crystal.html">Crystals</a>
+            <a href="testimonial.html">Testimonials</a>
+            <a href="booking.html">Book Now</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Spiritual Soul — Made with love ❤️🛐🧿🔮☮️🌅</p>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('show');
+        document.querySelector('.hamburger').classList.toggle('active');
+    }
+</script>
+</body>
+</html>
