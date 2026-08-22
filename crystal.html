@@ -3,103 +3,120 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>🔮 Ethemedium — Crystals & Ifá Beads</title>
+    <title>🔮 Spiritual Soul — Crystals & Ifá Beads</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
-        body{background:linear-gradient(145deg,#FAF0F0 0%,#F5E6E6 50%,#F0E0E0 100%);font-family:'Inter',sans-serif;min-height:100vh;}
-        .navbar{position:fixed;top:0;left:0;width:100%;background:rgba(255,248,245,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,165,165,0.2);z-index:1000;padding:0 20px;height:70px;display:flex;align-items:center;}
+        body{background:linear-gradient(145deg,#FFF8F0 0%,#FDF0E6 50%,#FAE8D8 100%);font-family:'Inter',sans-serif;min-height:100vh;}
+        
+        :root {
+            --primary: #C97B3A;
+            --primary-light: #E0955A;
+            --primary-dark: #A8622A;
+            --gold: #D4A84C;
+            --gold-light: #F0DC8A;
+            --text-dark: #3D2A1A;
+            --text-muted: #8A7A6A;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.15);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.25);
+            --radius: 16px;
+            --transition: all 0.3s ease;
+        }
+        
+        .navbar{position:fixed;top:0;left:0;width:100%;background:rgba(255,248,240,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,168,76,0.15);z-index:1000;padding:0 24px;height:72px;display:flex;align-items:center;}
         .nav-container{max-width:1200px;width:100%;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
-        .nav-logo{display:flex;align-items:center;gap:8px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:#6B2D5C;text-decoration:none;}
-        .nav-logo span{color:#D4A5A5;}
-        .nav-links{display:flex;list-style:none;gap:30px;align-items:center;}
-        .nav-links a{font-size:0.9rem;font-weight:500;color:#8A7A7A;transition:all 0.3s;display:flex;align-items:center;gap:6px;text-decoration:none;}
-        .nav-links a:hover,.nav-links a.active{color:#6B2D5C;font-weight:600;}
+        .nav-logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;color:var(--primary-dark);text-decoration:none;}
+        .nav-logo .logo-icon{font-size:1.6rem;}
+        .nav-logo .logo-text span{color:var(--gold);}
+        .nav-links{display:flex;list-style:none;gap:32px;align-items:center;}
+        .nav-links a{font-size:0.9rem;font-weight:500;color:var(--text-muted);transition:var(--transition);display:flex;align-items:center;gap:6px;text-decoration:none;}
+        .nav-links a:hover,.nav-links a.active{color:var(--primary);font-weight:600;}
         .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;}
-        .hamburger span{width:25px;height:3px;background:#6B2D5C;border-radius:3px;transition:all 0.3s;}
+        .hamburger span{width:28px;height:3px;background:var(--primary);border-radius:3px;transition:var(--transition);}
 
         .currency-selector{display:flex;align-items:center;gap:8px;background:white;padding:6px 14px;border-radius:50px;border:1px solid #E0D0D0;}
-        .currency-selector label{font-size:0.75rem;color:#8A7A7A;font-weight:500;}
-        .currency-selector select{border:none;background:transparent;font-size:0.85rem;font-weight:600;color:#6B2D5C;cursor:pointer;outline:none;font-family:'Inter',sans-serif;}
+        .currency-selector label{font-size:0.75rem;color:var(--text-muted);font-weight:500;}
+        .currency-selector select{border:none;background:transparent;font-size:0.85rem;font-weight:600;color:var(--primary);cursor:pointer;outline:none;font-family:'Inter',sans-serif;}
         .currency-selector select option{padding:4px;}
 
-        .cart-icon{position:relative;cursor:pointer;font-size:1.3rem;color:#6B2D5C;transition:all 0.3s;}
-        .cart-icon:hover{color:#8B4D7A;transform:scale(1.1);}
+        .cart-icon{position:relative;cursor:pointer;font-size:1.3rem;color:var(--primary);transition:var(--transition);}
+        .cart-icon:hover{color:var(--primary-light);transform:scale(1.1);}
         .cart-badge{position:absolute;top:-8px;right:-10px;background:#E8798A;color:white;border-radius:50%;width:20px;height:20px;font-size:0.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
 
         .cart-sidebar{position:fixed;top:0;right:-420px;width:400px;max-width:92vw;height:100%;background:white;box-shadow:-8px 0 30px rgba(0,0,0,0.15);z-index:2000;transition:right 0.4s ease;padding:20px;overflow-y:auto;}
         .cart-sidebar.open{right:0;}
         .cart-sidebar-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:2px solid #F0E0E0;margin-bottom:16px;}
-        .cart-sidebar-header h2{font-family:'Playfair Display',serif;color:#6B2D5C;font-size:1.5rem;}
-        .cart-close{background:none;border:none;font-size:1.8rem;cursor:pointer;color:#8A7A7A;transition:all 0.3s;}
-        .cart-close:hover{color:#6B2D5C;transform:rotate(90deg);}
+        .cart-sidebar-header h2{font-family:'Playfair Display',serif;color:var(--primary);font-size:1.5rem;}
+        .cart-close{background:none;border:none;font-size:1.8rem;cursor:pointer;color:var(--text-muted);transition:var(--transition);}
+        .cart-close:hover{color:var(--primary);transform:rotate(90deg);}
         .cart-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #F0E0E0;}
         .cart-item-info{display:flex;flex-direction:column;flex:1;}
-        .cart-item-name{font-weight:600;color:#2D1F1F;font-size:0.95rem;}
-        .cart-item-price{color:#6B2D5C;font-weight:600;font-size:0.9rem;}
+        .cart-item-name{font-weight:600;color:var(--text-dark);font-size:0.95rem;}
+        .cart-item-price{color:var(--primary);font-weight:600;font-size:0.9rem;}
         .cart-item-qty{display:flex;align-items:center;gap:6px;}
-        .cart-item-qty button{width:28px;height:28px;border-radius:50%;border:1px solid #E0D0D0;background:white;cursor:pointer;font-size:1rem;font-weight:700;color:#6B2D5C;transition:all 0.3s;display:flex;align-items:center;justify-content:center;}
-        .cart-item-qty button:hover{background:#6B2D5C;color:white;border-color:#6B2D5C;}
-        .cart-item-qty span{font-weight:600;font-size:1rem;min-width:24px;text-align:center;color:#2D1F1F;}
-        .cart-item-remove{background:none;border:none;color:#cc5555;cursor:pointer;font-size:1.1rem;transition:all 0.3s;padding:4px 8px;margin-left:4px;}
+        .cart-item-qty button{width:28px;height:28px;border-radius:50%;border:1px solid #E0D0D0;background:white;cursor:pointer;font-size:1rem;font-weight:700;color:var(--primary);transition:var(--transition);display:flex;align-items:center;justify-content:center;}
+        .cart-item-qty button:hover{background:var(--primary);color:white;border-color:var(--primary);}
+        .cart-item-qty span{font-weight:600;font-size:1rem;min-width:24px;text-align:center;color:var(--text-dark);}
+        .cart-item-remove{background:none;border:none;color:#cc5555;cursor:pointer;font-size:1.1rem;transition:var(--transition);padding:4px 8px;margin-left:4px;}
         .cart-item-remove:hover{transform:scale(1.2);}
-        .cart-total{padding:16px 0;border-top:2px solid #F0E0E0;margin-top:16px;display:flex;justify-content:space-between;font-size:1.2rem;font-weight:700;color:#6B2D5C;}
+        .cart-total{padding:16px 0;border-top:2px solid #F0E0E0;margin-top:16px;display:flex;justify-content:space-between;font-size:1.2rem;font-weight:700;color:var(--primary);}
         .cart-actions{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
-        .cart-btn-crystals{width:100%;padding:14px;background:#25D366;color:white;border:none;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;}
+        .cart-btn-crystals{width:100%;padding:14px;background:#25D366;color:white;border:none;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;}
         .cart-btn-crystals:hover{background:#1da85a;transform:scale(1.02);}
-        .cart-btn-booking{width:100%;padding:14px;background:#6B2D5C;color:white;border:none;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;}
-        .cart-btn-booking:hover{background:#8B4D7A;transform:scale(1.02);}
-        .cart-empty{text-align:center;padding:40px 0;color:#8A7A7A;font-size:1.1rem;}
+        .cart-btn-booking{width:100%;padding:14px;background:var(--primary);color:white;border:none;border-radius:50px;font-size:1rem;font-weight:600;cursor:pointer;transition:var(--transition);font-family:'Inter',sans-serif;display:flex;align-items:center;justify-content:center;gap:10px;}
+        .cart-btn-booking:hover{background:var(--primary-light);transform:scale(1.02);}
+        .cart-empty{text-align:center;padding:40px 0;color:var(--text-muted);font-size:1.1rem;}
         .cart-empty i{font-size:3rem;display:block;margin-bottom:12px;color:#E0D0D0;}
-        .cart-note{text-align:center;font-size:0.75rem;color:#8A7A7A;margin-top:10px;padding:10px;background:#FAF5F5;border-radius:8px;}
-        .cart-note strong{color:#6B2D5C;}
+        .cart-note{text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:10px;padding:10px;background:#FAF5F5;border-radius:8px;}
+        .cart-note strong{color:var(--primary);}
 
         .cart-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1999;display:none;}
         .cart-overlay.show{display:block;}
 
         .crystal-page{padding:100px 20px 60px;max-width:800px;margin:0 auto;}
         .page-header{text-align:center;margin-bottom:40px;}
-        .page-badge{display:inline-block;background:#6B2D5C;color:white;padding:4px 16px;border-radius:50px;font-size:0.75rem;font-weight:600;letter-spacing:1px;}
-        .page-header h1{font-family:'Playfair Display',serif;font-size:2.5rem;color:#2D1F1F;margin-top:8px;}
-        .page-header p{color:#8A7A7A;}
+        .page-badge{display:inline-block;background:var(--gold-light);color:var(--primary-dark);padding:4px 18px;border-radius:50px;font-size:0.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;}
+        .page-header h1{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--text-dark);margin-top:8px;}
+        .page-header p{color:var(--text-muted);font-size:1rem;}
         .emoji-line{font-size:1.6rem;letter-spacing:8px;margin-top:6px;}
-        .section-divider{text-align:center;margin:50px 0 30px;padding:20px 0;border-top:2px dashed #F0E0E0;border-bottom:2px dashed #F0E0E0;}
-        .section-divider h2{font-family:'Playfair Display',serif;color:#6B2D5C;font-size:1.8rem;}
-        .section-divider p{color:#8A7A7A;}
+        .section-divider{text-align:center;margin:50px 0 30px;padding:20px 0;border-top:2px dashed rgba(212,168,76,0.25);border-bottom:2px dashed rgba(212,168,76,0.25);}
+        .section-divider h2{font-family:'Playfair Display',serif;color:var(--primary);font-size:1.8rem;}
+        .section-divider p{color:var(--text-muted);font-size:0.95rem;}
         .product-card{background:white;border-radius:16px;padding:24px;margin-bottom:24px;border:2px solid #F0E0E0;transition:all 0.3s ease;display:flex;flex-direction:column;align-items:center;text-align:center;}
-        .product-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(107,45,92,0.12);border-color:#D4A5A5;}
+        .product-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(201,123,58,0.12);border-color:#D4A5A5;}
         .product-card.featured{border-color:#C9A84C;background:linear-gradient(135deg,#FFF9F0,#FFF5E6);}
         .product-card img{width:100%;max-width:400px;height:300px;object-fit:cover;border-radius:12px;margin-bottom:16px;background:#f5ecec;}
-        .product-card h3{font-size:1.3rem;color:#2D1F1F;margin-bottom:6px;font-family:'Playfair Display',serif;}
-        .product-card .desc{font-size:0.9rem;color:#8A7A7A;margin-bottom:8px;line-height:1.5;}
-        .product-card .price{font-weight:700;color:#6B2D5C;font-size:1.4rem;display:block;margin:8px 0 16px;}
-        .product-card .btn-add{background:#6B2D5C;color:white;padding:12px 40px;border:none;border-radius:50px;font-size:0.95rem;font-weight:600;transition:all 0.3s ease;display:inline-block;text-decoration:none;cursor:pointer;font-family:'Inter',sans-serif;}
-        .product-card .btn-add:hover{background:#8B4D7A;transform:scale(1.02);}
+        .product-card h3{font-size:1.3rem;color:var(--text-dark);margin-bottom:6px;font-family:'Playfair Display',serif;}
+        .product-card .desc{font-size:0.9rem;color:var(--text-muted);margin-bottom:8px;line-height:1.5;}
+        .product-card .price{font-weight:700;color:var(--primary);font-size:1.4rem;display:block;margin:8px 0 16px;}
+        .product-card .btn-add{background:var(--primary);color:white;padding:12px 40px;border:none;border-radius:50px;font-size:0.95rem;font-weight:600;transition:all 0.3s ease;display:inline-block;text-decoration:none;cursor:pointer;font-family:'Inter',sans-serif;}
+        .product-card .btn-add:hover{background:var(--primary-light);transform:scale(1.02);}
         .badge{padding:3px 14px;border-radius:20px;font-size:0.7rem;font-weight:600;color:white;display:inline-block;margin-bottom:6px;}
         .badge-popular{background:#C9A84C;}
         .badge-best{background:#E8798A;}
         .badge-new{background:#6B2D5C;}
         .badge-save{background:#2d7a5a;}
-        .crystals-note{text-align:center;margin-top:30px;padding:20px;background:#FAF5F5;border-radius:12px;border:1px solid #F0E0E0;}
-        .crystals-note p{color:#6B2D5C;font-size:0.95rem;margin:0;}
+        .crystals-note{text-align:center;margin-top:30px;padding:20px;background:rgba(255,248,240,0.6);border-radius:12px;border:1px solid rgba(212,168,76,0.15);}
+        .crystals-note p{color:var(--primary);font-size:0.95rem;margin:0;}
         .crystals-note i{margin-right:8px;}
-        .footer{background:#4A1F3F;color:rgba(255,255,255,0.8);padding:40px 20px 20px;margin-top:40px;}
+        .footer{background:var(--primary-dark);color:rgba(255,255,255,0.85);padding:40px 24px 20px;margin-top:40px;}
         .footer-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;}
         .footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:white;display:block;margin-bottom:8px;}
         .footer-brand p{font-size:0.9rem;opacity:0.7;}
         .footer-links h4,.footer-contact h4{color:white;font-size:1rem;margin-bottom:12px;}
-        .footer-links a,.footer-contact a{display:block;color:rgba(255,255,255,0.6);font-size:0.9rem;padding:4px 0;text-decoration:none;transition:all 0.3s;}
+        .footer-links a,.footer-contact a{display:block;color:rgba(255,255,255,0.6);font-size:0.9rem;padding:4px 0;text-decoration:none;transition:var(--transition);}
         .footer-links a:hover,.footer-contact a:hover{color:white;}
         .footer-socials{display:flex;gap:14px;margin-top:12px;}
-        .footer-socials a{color:rgba(255,255,255,0.6);font-size:1.2rem;transition:all 0.3s;}
+        .footer-socials a{color:rgba(255,255,255,0.6);font-size:1.2rem;transition:var(--transition);}
         .footer-socials a:hover{color:white;}
         .footer-bottom{max-width:1200px;margin:0 auto;text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);font-size:0.8rem;opacity:0.6;margin-top:20px;}
         .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#2D1F1F;color:white;padding:14px 28px;border-radius:50px;font-size:0.9rem;box-shadow:0 8px 30px rgba(0,0,0,0.2);opacity:0;transition:all 0.5s ease;z-index:3000;pointer-events:none;text-align:center;}
         .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-        @media (max-width:600px){.nav-links{display:none;position:fixed;top:70px;left:0;width:100%;background:rgba(255,248,245,0.98);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(212,165,165,0.2);}
+        @media (max-width:600px){.nav-links{display:none;position:fixed;top:72px;left:0;width:100%;background:white;flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid rgba(212,168,76,0.15);}
         .nav-links.show{display:flex;}
         .hamburger{display:flex;}
         .page-header h1{font-size:1.8rem;}
@@ -153,7 +170,10 @@
 
 <nav class="navbar">
     <div class="nav-container">
-        <a href="index.html" class="nav-logo">🔮 Ethe<span>medium</span></a>
+        <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🔮</span>
+            <span class="logo-text">Spiritual<span>Soul</span></span>
+        </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="readings.html"><i class="fas fa-hand-sparkles"></i> Readings</a></li>
@@ -293,15 +313,15 @@
 
     <div class="crystals-note">
         <p><i class="fas fa-moon"></i> All crystals, beads, and oils are cleansed and charged under the full moon before shipping, love ❤️</p>
-        <p style="font-size: 0.8rem; color: #8A7A7A; margin-top: 4px;">📦 Worldwide shipping available</p>
-        <p style="font-size: 0.8rem; color: #6B2D5C; margin-top: 4px;">🙏 Custom Ifá bead sets available upon request</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">📦 Worldwide shipping available</p>
+        <p style="font-size: 0.8rem; color: var(--primary); margin-top: 4px;">🙏 Custom Ifá bead sets available upon request</p>
     </div>
 </section>
 
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-brand">
-            <span class="footer-logo">🔮 Ethemedium</span>
+            <span class="footer-logo">🔮 Spiritual Soul</span>
             <p>Sending positive energy to you if you need healing, love ❤️</p>
             <div class="footer-socials">
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -327,7 +347,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>© 2026 Ethemedium — Made with love ❤️🛐🧿🔮☮️🌅</p>
+        <p>© 2026 Spiritual Soul — Made with love ❤️🛐🧿🔮☮️🌅</p>
     </div>
 </footer>
 
