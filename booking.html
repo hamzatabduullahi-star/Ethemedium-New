@@ -603,7 +603,7 @@
                 </div>
                 <div>
                     <label>Phone Number <span class="required">*</span></label>
-                    <input type="tel" id="clientPhone" placeholder="e.g. +1 352 828 7004" required />
+                    <input type="tel" id="clientPhone" placeholder="e.g. +1 302 602 4538" required />
                 </div>
                 <div>
                     <label>Email Address <span class="required">*</span></label>
@@ -739,7 +739,7 @@
         </div>
         <div class="footer-contact">
             <h4>Contact</h4>
-            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://wa.me/13026024538"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </div>
@@ -803,7 +803,8 @@
     let crystalCartMessage = '';
     let selectedPayment = null;
 
-    const WHATSAPP_NUMBER = '13528287004';
+    // 🔴 NEW WHATSAPP NUMBER
+    const WHATSAPP_NUMBER = '13026024538';
 
     // ============================================
     // DOM REFS
@@ -945,7 +946,7 @@
     }
 
     // ============================================
-    // BOOK NOW — WhatsApp Only
+    // BOOK NOW
     // ============================================
 
     function bookNow(platform) {
@@ -1043,6 +1044,7 @@ ${paymentInfo}
         const encoded = encodeURIComponent(message);
         let url = '';
         if (platform === 'whatsapp') {
+            // 🔴 NEW WHATSAPP NUMBER
             url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
         }
         window.open(url, '_blank');
@@ -1106,7 +1108,7 @@ ${paymentInfo}
         console.log('🔮 Spiritual Soul Booking Page is ready, love! ❤️🛐🧿🔮☮️🌅');
         console.log('💳 9 Payment Methods Available');
         console.log('📦 Crystal cart linked from crystal.html');
-        console.log('📱 WhatsApp only');
+        console.log('📱 WhatsApp: +1 302 602 4538');
     }
 
     if (document.readyState === 'loading') {
