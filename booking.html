@@ -395,6 +395,12 @@
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
         }
         .booking-btn.whatsapp:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4); }
+        .booking-btn.telegram {
+            background: #0088cc;
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.3);
+        }
+        .booking-btn.telegram:hover { transform: translateY(-2px); box-shadow: 0 6px 30px rgba(0, 136, 204, 0.4); }
         .booking-btn i { font-size: 1.5rem; }
 
         .booking-note {
@@ -702,6 +708,9 @@
                 <button class="booking-btn whatsapp" onclick="bookNow('whatsapp')">
                     <i class="fab fa-whatsapp"></i> Book via WhatsApp
                 </button>
+                <button class="booking-btn telegram" onclick="bookNow('telegram')">
+                    <i class="fab fa-telegram-plane"></i> Book via Telegram
+                </button>
                 <div class="booking-note"><i class="fas fa-lock"></i> Your information is private and confidential, love ❤️</div>
                 <div class="booking-note"><i class="fas fa-clock"></i> You'll receive a confirmation within 24 hours</div>
             </div>
@@ -740,6 +749,7 @@
         <div class="footer-contact">
             <h4>Contact</h4>
             <a href="https://wa.me/13026024538"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/+13026024538"><i class="fab fa-telegram"></i> Telegram</a>
             <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </div>
@@ -782,10 +792,10 @@
     // ============================================
 
     const paymentDetails = {
-        paypal: { name: 'PayPal', detail: 'paypal.me/ethemedium', icon: '💳' },
-        cashapp: { name: 'CashApp', detail: '$Ethemedium', icon: '💰' },
-        venmo: { name: 'Venmo', detail: '@Ethemedium', icon: '🏦' },
-        zelle: { name: 'Zelle', detail: 'ethemedium@gmail.com', icon: '📱' },
+        paypal: { name: 'PayPal', detail: 'paypal.me/spiritualsoul', icon: '💳' },
+        cashapp: { name: 'CashApp', detail: '$SpiritualSoul', icon: '💰' },
+        venmo: { name: 'Venmo', detail: '@SpiritualSoul', icon: '🏦' },
+        zelle: { name: 'Zelle', detail: 'spiritualsoul@gmail.com', icon: '📱' },
         applepay: { name: 'Apple Pay', detail: 'Available on request', icon: '📲' },
         applegift: { name: 'Apple Gift Card', detail: 'Send gift card code via WhatsApp', icon: '🎁' },
         etransfer: { name: 'eTransfer', detail: 'Interac e-Transfer available', icon: '💸' },
@@ -803,8 +813,9 @@
     let crystalCartMessage = '';
     let selectedPayment = null;
 
-    // 🔴 NEW WHATSAPP NUMBER
+    // 🔴 YOUR CONTACT INFO
     const WHATSAPP_NUMBER = '13026024538';
+    const TELEGRAM_NUMBER = '13026024538'; // Same number for Telegram
 
     // ============================================
     // DOM REFS
@@ -946,7 +957,7 @@
     }
 
     // ============================================
-    // BOOK NOW
+    // BOOK NOW — WhatsApp + Telegram
     // ============================================
 
     function bookNow(platform) {
@@ -1044,11 +1055,12 @@ ${paymentInfo}
         const encoded = encodeURIComponent(message);
         let url = '';
         if (platform === 'whatsapp') {
-            // 🔴 NEW WHATSAPP NUMBER
             url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+        } else if (platform === 'telegram') {
+            url = `https://t.me/+${TELEGRAM_NUMBER}?text=${encoded}`;
         }
         window.open(url, '_blank');
-        showToast(`✨ Opening WhatsApp... Sending love! ❤️`);
+        showToast(`✨ Opening ${platform.charAt(0).toUpperCase() + platform.slice(1)}... Sending love! ❤️`);
 
         sessionStorage.removeItem('crystalCart');
         sessionStorage.removeItem('cartMessage');
@@ -1109,6 +1121,7 @@ ${paymentInfo}
         console.log('💳 9 Payment Methods Available');
         console.log('📦 Crystal cart linked from crystal.html');
         console.log('📱 WhatsApp: +1 302 602 4538');
+        console.log('📱 Telegram: +1 302 602 4538');
     }
 
     if (document.readyState === 'loading') {
