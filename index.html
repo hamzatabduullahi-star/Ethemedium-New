@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>🔮 Spiritual Soul — Readings & Healing</title>
+    <title>🔮 Spiritual Soul — Home</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); 
-            font-family: 'Inter', sans-serif; 
-            min-height: 100vh; 
-        }
+        body { background: linear-gradient(145deg, #FFF8F0 0%, #FDF0E6 50%, #FAE8D8 100%); font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; }
         
         :root {
             --primary: #C97B3A;
@@ -25,540 +21,159 @@
             --text-dark: #3D2A1A;
             --text-muted: #8A7A6A;
             --white: #FFFFFF;
-            --shadow: 0 8px 32px rgba(201, 123, 58, 0.15);
-            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.25);
+            --shadow: 0 8px 32px rgba(201, 123, 58, 0.12);
+            --shadow-hover: 0 12px 40px rgba(201, 123, 58, 0.2);
             --radius: 16px;
             --transition: all 0.3s ease;
         }
         
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 248, 240, 0.92);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(212, 168, 76, 0.15);
-            z-index: 1000;
-            padding: 0 24px;
-            height: 72px;
-            display: flex;
-            align-items: center;
-        }
-        .nav-container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--primary-dark);
-            text-decoration: none;
-        }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 248, 240, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(212, 168, 76, 0.15); z-index: 1000; padding: 0 24px; height: 72px; display: flex; align-items: center; }
+        .nav-container { max-width: 1200px; width: 100%; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--primary-dark); text-decoration: none; }
         .nav-logo .logo-icon { font-size: 1.6rem; }
         .nav-logo .logo-text span { color: var(--gold); }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-            align-items: center;
-        }
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-        }
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-        }
-        .hamburger span {
-            width: 28px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 3px;
-            transition: var(--transition);
-        }
+        .nav-links { display: flex; list-style: none; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); transition: var(--transition); display: flex; align-items: center; gap: 6px; text-decoration: none; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); font-weight: 600; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+        .hamburger span { width: 28px; height: 3px; background: var(--primary); border-radius: 3px; transition: var(--transition); }
+
+        .hero { height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #A8622A 0%, #C97B3A 40%, #E0955A 100%); }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.15); z-index: 1; }
         
-        /* ===== HERO ===== */
-        .hero {
-            padding: 110px 24px 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            min-height: 85vh;
-        }
-        .hero-content { display: flex; flex-direction: column; gap: 12px; }
-        .hero-badge {
-            display: inline-block;
-            background: var(--gold-light);
-            color: var(--primary-dark);
-            padding: 6px 20px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            width: fit-content;
-        }
-        .hero-content .greeting {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2rem;
-            color: var(--gold);
-        }
+        .hero-bg-shapes { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; }
+        .hero-bg-shapes span { position: absolute; border-radius: 50%; background: rgba(255,255,255,0.03); animation: float 20s infinite ease-in-out; }
+        .hero-bg-shapes span:nth-child(1) { width: 300px; height: 300px; top: -50px; left: -100px; animation-delay: 0s; }
+        .hero-bg-shapes span:nth-child(2) { width: 400px; height: 400px; bottom: -100px; right: -100px; animation-delay: 5s; }
+        .hero-bg-shapes span:nth-child(3) { width: 200px; height: 200px; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 10s; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0) scale(1); } 25% { transform: translate(30px, -30px) scale(1.1); } 50% { transform: translate(-20px, 20px) scale(0.9); } 75% { transform: translate(40px, 10px) scale(1.05); } }
+
+        .hero-text-container { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 20px; width: 100%; overflow: hidden; }
+        .hero-slides-wrapper { position: relative; width: 100%; min-height: 420px; }
         
-        /* ===== TEXT SLIDESHOW - SLIDE IN/OUT ===== */
-        .text-slideshow {
-            position: relative;
-            height: 90px;
-            overflow: hidden;
-            width: 100%;
-        }
-        .text-slideshow .ts-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: var(--text-dark);
-            line-height: 1.2;
-            transform: translateX(100%);
-            opacity: 0;
-            transition: all 0.8s ease-in-out;
-            text-align: center;
-            padding: 0 10px;
-        }
-        .text-slideshow .ts-slide span { color: var(--primary); }
-        .text-slideshow .ts-slide.active {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        .text-slideshow .ts-slide.exit {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-        .text-slideshow .ts-slide.enter {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        
-        .hero-content .subtitle {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            max-width: 500px;
-            margin-top: 4px;
-        }
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin-top: 4px;
-        }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            padding: 14px 36px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-        }
-        .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            padding: 14px 36px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid var(--primary);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        /* ===== IMAGE SLIDESHOW ===== */
-        .slideshow-container {
-            width: 100%;
-            max-width: 450px;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(201, 123, 58, 0.25);
-            position: relative;
-            height: 400px;
-        }
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            text-align: center;
-            color: white;
-            opacity: 0;
-            transition: opacity 1s ease;
-            border-radius: 30px;
-        }
-        .slide.active { opacity: 1; }
-        .slide-1 { background: linear-gradient(135deg, #C97B3A, #E0955A); }
-        .slide-2 { background: linear-gradient(135deg, #D4A84C, #F0DC8A); }
-        .slide-3 { background: linear-gradient(135deg, #A8622A, #C97B3A); }
-        .slide-4 { background: linear-gradient(135deg, #8B5E3C, #C97B3A); }
-        .slide .slide-icon { font-size: 3.5rem; display: block; margin-bottom: 10px; }
-        .slide h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; }
-        .slide p { opacity: 0.85; font-size: 1rem; margin-top: 4px; max-width: 300px; }
-        
-        .slide-dots {
-            position: absolute;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 5;
-        }
-        .slide-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.4);
-            cursor: pointer;
-            border: none;
-            transition: var(--transition);
-        }
-        .slide-dot.active { background: white; transform: scale(1.2); }
-        .slide-dot:hover { background: rgba(255,255,255,0.8); }
-        
-        /* ===== TRUST BADGES ===== */
-        .trust-badges {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px 24px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
+        .hero-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; transform: translateX(100%); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; padding: 10px; }
+        .hero-slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+        .hero-slide.exit-left { opacity: 0; transform: translateX(-100%); }
+        .hero-slide.enter-right { opacity: 0; transform: translateX(100%); }
+
+        .hero-slide .hero-sub { font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--gold-light); display: block; margin-bottom: 4px; }
+        .hero-slide .hero-main { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: white; text-shadow: 0 4px 30px rgba(0,0,0,0.3); letter-spacing: 2px; }
+        .hero-slide .hero-line { font-size: 2rem; letter-spacing: 12px; margin-top: 6px; display: block; }
+        .hero-slide .hero-desc { font-size: 1.15rem; color: rgba(255,255,255,0.85); margin: 16px 0 28px; line-height: 1.8; font-weight: 300; letter-spacing: 0.5px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .btn-hero-primary { background: white; color: var(--primary-dark); padding: 14px 36px; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; text-decoration: none; border: none; cursor: pointer; }
+        .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(255,255,255,0.2); }
+        .btn-hero-secondary { background: transparent; color: white; padding: 14px 36px; border-radius: 50px; font-weight: 600; font-size: 1rem; border: 2px solid rgba(255,255,255,0.4); transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; text-decoration: none; cursor: pointer; }
+        .btn-hero-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; transform: translateY(-3px); }
+        .btn-hero-about { background: var(--gold-light); color: var(--text-dark); padding: 14px 36px; border-radius: 50px; font-weight: 700; font-size: 1rem; transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; text-decoration: none; border: none; cursor: pointer; }
+        .btn-hero-about:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(240, 220, 138, 0.3); }
+
+        .hero-dots { position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); z-index: 5; display: flex; gap: 12px; }
+        .hero-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s ease; border: none; }
+        .hero-dot.active { background: white; transform: scale(1.3); }
+        .hero-dot:hover { background: rgba(255,255,255,0.7); }
+
+        .bottom-slideshow { padding: 80px 20px 60px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .bottom-slideshow .section-label { display: inline-block; background: var(--primary); color: white; padding: 4px 16px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+        .bottom-slideshow h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-dark); margin-bottom: 4px; }
+        .bottom-slideshow .sub { color: var(--text-muted); font-size: 1rem; margin-bottom: 20px; }
+
+        .bottom-slide-container { position: relative; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 8px 40px rgba(201, 123, 58, 0.08); border: 1px solid #F0E0E0; min-height: 140px; overflow: hidden; }
+        .bottom-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; opacity: 0; transform: translateX(100%); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; }
+        .bottom-slide.active { opacity: 1; transform: translateX(0); pointer-events: all; }
+        .bottom-slide.exit-left { opacity: 0; transform: translateX(-100%); }
+
+        .bottom-slide .bs-icon { font-size: 2.5rem; display: block; margin-bottom: 6px; }
+        .bottom-slide .bs-text { font-family: 'Great Vibes', cursive; font-size: 1.8rem; color: var(--primary); }
+        .bottom-slide .bs-sub { font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text-muted); margin-top: 4px; }
+
+        .bottom-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .bottom-dot { width: 10px; height: 10px; border-radius: 50%; background: #E0D0D0; cursor: pointer; transition: all 0.3s ease; border: none; }
+        .bottom-dot.active { background: var(--primary); transform: scale(1.2); }
+        .bottom-dot:hover { background: var(--primary); }
+
+        .bottom-arrows { display: flex; justify-content: center; gap: 14px; margin-top: 14px; }
+        .bottom-arrow { background: white; border: 2px solid #F0E0E0; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; font-size: 1.2rem; color: var(--primary); transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+        .bottom-arrow:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .trust-badges { max-width: 1200px; margin: 0 auto; padding: 20px 24px 20px; display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
         .trust-item i { color: var(--gold); font-size: 1.2rem; }
-        
-        /* ===== HOW IT WORKS ===== */
-        .how-it-works {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 24px 50px;
-            text-align: center;
-        }
-        .how-it-works .section-label {
-            display: inline-block;
-            background: var(--gold-light);
-            color: var(--primary-dark);
-            padding: 4px 18px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .how-it-works h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--text-dark);
-        }
-        .how-it-works .sub {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 30px;
-        }
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        .step-card {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 30px 24px;
-            border: 1px solid rgba(212, 168, 76, 0.1);
-            transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-        }
-        .step-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--gold);
-        }
-        .step-number {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 1.1rem;
-            line-height: 40px;
-            margin-bottom: 12px;
-        }
-        .step-card h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-        .step-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-            line-height: 1.6;
-        }
-        
-        /* ===== WHY CHOOSE ME ===== */
-        .why-choose {
-            background: var(--white);
-            padding: 40px 24px 50px;
-            border-top: 1px solid rgba(212, 168, 76, 0.1);
-            border-bottom: 1px solid rgba(212, 168, 76, 0.1);
-        }
-        .why-choose .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .why-choose .section-label {
-            display: inline-block;
-            background: var(--gold-light);
-            color: var(--primary-dark);
-            padding: 4px 18px;
-            border-radius: 50px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-        .why-choose h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--text-dark);
-        }
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 30px;
-        }
-        .why-item {
-            text-align: center;
-        }
+
+        .how-it-works { max-width: 1200px; margin: 0 auto; padding: 40px 24px 50px; text-align: center; }
+        .how-it-works .section-label { display: inline-block; background: var(--gold-light); color: var(--text-dark); padding: 4px 18px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+        .how-it-works h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-dark); }
+        .how-it-works .sub { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; }
+        .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .step-card { background: white; border-radius: var(--radius); padding: 30px 24px; border: 1px solid rgba(212, 168, 76, 0.1); transition: var(--transition); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: var(--gold); }
+        .step-number { display: inline-block; background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; font-weight: 700; font-size: 1.1rem; line-height: 40px; margin-bottom: 12px; }
+        .step-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text-dark); }
+        .step-card p { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; line-height: 1.6; }
+
+        .why-choose { background: white; padding: 40px 24px 50px; border-top: 1px solid rgba(212, 168, 76, 0.1); border-bottom: 1px solid rgba(212, 168, 76, 0.1); }
+        .why-choose .container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        .why-choose .section-label { display: inline-block; background: var(--gold-light); color: var(--text-dark); padding: 4px 18px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+        .why-choose h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--text-dark); }
+        .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 30px; }
+        .why-item { text-align: center; }
         .why-item .icon { font-size: 2.5rem; display: block; margin-bottom: 8px; }
         .why-item h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-dark); }
         .why-item p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
-        
-        /* ===== QR CODE ===== */
-        .qr-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 35px 24px 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
+
+        /* ===== QR CODE SECTION ===== */
+        .qr-section { max-width: 1000px; margin: 0 auto; padding: 35px 24px 45px; display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; border-top: 2px dashed rgba(212, 168, 76, 0.25); border-bottom: 2px dashed rgba(212, 168, 76, 0.25); }
         .qr-box { text-align: center; }
-        .qr-box h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        .qr-box .qr-sub {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-        .qr-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 16px;
-            border: 3px solid var(--gold);
-            padding: 6px;
-            background: white;
-            transition: var(--transition);
-        }
-        .qr-image:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-hover);
-        }
+        .qr-box h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
+        .qr-box .qr-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+        .qr-image { width: 130px; height: 130px; border-radius: 16px; border: 3px solid var(--gold); padding: 6px; background: white; transition: var(--transition); }
+        .qr-image:hover { transform: scale(1.05); box-shadow: var(--shadow-hover); }
         .qr-features { text-align: left; color: var(--text-dark); }
-        .qr-features h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        .qr-features p {
-            font-size: 0.9rem;
-            line-height: 2;
-            color: var(--text-muted);
-        }
+        .qr-features h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--primary); margin-bottom: 8px; }
+        .qr-features p { font-size: 0.9rem; line-height: 2; color: var(--text-muted); }
         .qr-features i { color: var(--primary); width: 22px; }
-        
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--primary-dark);
-            color: rgba(255,255,255,0.85);
-            padding: 40px 24px 20px;
-        }
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
-        }
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: white;
-            display: block;
-            margin-bottom: 8px;
-        }
+
+        .footer { background: var(--primary-dark); color: rgba(255,255,255,0.85); padding: 40px 24px 20px; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: white; display: block; margin-bottom: 8px; }
         .footer-brand p { font-size: 0.9rem; opacity: 0.7; }
         .footer-links h4, .footer-contact h4 { color: white; font-size: 1rem; margin-bottom: 12px; }
-        .footer-links a, .footer-contact a {
-            display: block;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            padding: 4px 0;
-            text-decoration: none;
-            transition: var(--transition);
-        }
+        .footer-links a, .footer-contact a { display: block; color: rgba(255,255,255,0.6); font-size: 0.9rem; padding: 4px 0; text-decoration: none; transition: var(--transition); }
         .footer-links a:hover, .footer-contact a:hover { color: white; }
         .footer-socials { display: flex; gap: 14px; margin-top: 12px; }
         .footer-socials a { color: rgba(255,255,255,0.6); font-size: 1.2rem; transition: var(--transition); }
         .footer-socials a:hover { color: white; }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem;
-            opacity: 0.6;
-            margin-top: 20px;
-        }
-        
-        @media (max-width: 992px) {
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding-top: 90px;
-            }
-            .hero-content { align-items: center; }
-            .hero-badge { align-self: center; }
-            .hero-content .subtitle { max-width: 100%; }
-            .slideshow-container { max-width: 100%; height: 320px; }
-            .steps-grid { grid-template-columns: 1fr 1fr; }
-            .why-grid { grid-template-columns: 1fr 1fr; }
-            .text-slideshow { height: 75px; }
-            .text-slideshow .ts-slide { font-size: 3rem; }
-        }
+        .footer-bottom { max-width: 1200px; margin: 0 auto; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; opacity: 0.6; margin-top: 20px; }
+
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 72px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 24px;
-                gap: 16px;
-                border-bottom: 1px solid rgba(212, 168, 76, 0.15);
-            }
+            .nav-links { display: none; position: fixed; top: 72px; left: 0; width: 100%; background: white; flex-direction: column; padding: 24px; gap: 16px; border-bottom: 1px solid rgba(212, 168, 76, 0.15); }
             .nav-links.show { display: flex; }
             .hamburger { display: flex; }
-            .text-slideshow { height: 65px; }
-            .text-slideshow .ts-slide { font-size: 2.5rem; }
-            .hero-buttons { flex-direction: column; align-items: center; width: 100%; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            .footer-container { grid-template-columns: 1fr; gap: 24px; }
+            .hero-slide .hero-main { font-size: 3rem; }
+            .hero-slide .hero-sub { font-size: 1.5rem; }
+            .hero-slide .hero-desc { font-size: 1rem; }
+            .footer-container { grid-template-columns: 1fr; gap: 20px; }
+            .bottom-slide .bs-text { font-size: 1.3rem; }
+            .bottom-slide-container { min-height: 120px; }
+            .hero-slides-wrapper { min-height: 380px; }
+            .steps-grid { grid-template-columns: 1fr 1fr; }
+            .why-grid { grid-template-columns: 1fr 1fr; }
             .qr-section { flex-direction: column; text-align: center; gap: 20px; }
             .qr-features { text-align: center; }
-            .slideshow-container { height: 280px; }
-            .slide h3 { font-size: 1.4rem; }
-            .slide .slide-icon { font-size: 2.8rem; }
-            .steps-grid { grid-template-columns: 1fr; }
-            .why-grid { grid-template-columns: 1fr; }
             .trust-badges { gap: 20px; }
         }
         @media (max-width: 480px) {
-            .text-slideshow { height: 55px; }
-            .text-slideshow .ts-slide { font-size: 1.9rem; }
+            .hero-slide .hero-main { font-size: 2.2rem; }
+            .hero-slide .hero-sub { font-size: 1.2rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-hero-primary, .btn-hero-secondary, .btn-hero-about { width: 100%; justify-content: center; }
+            .bottom-slide .bs-text { font-size: 1.1rem; }
+            .bottom-slide-container { min-height: 160px; padding: 20px; }
+            .hero-slides-wrapper { min-height: 400px; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .qr-image { width: 110px; height: 110px; }
         }
     </style>
 </head>
@@ -584,58 +199,116 @@
     </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- ===== HERO SECTION ===== -->
 <section class="hero">
-    <div class="hero-content">
-        <span class="hero-badge">✨ Your Light is Calling</span>
-        <span class="greeting">Welcome, Love ❤️</span>
-        
-        <!-- TEXT SLIDESHOW - SLIDE IN/OUT -->
-        <div class="text-slideshow" id="textSlideshow">
-            <div class="ts-slide active">Find Peace, <span>Love</span> & Purpose</div>
-            <div class="ts-slide">Trust Your <span>Journey</span></div>
-            <div class="ts-slide">Embrace Your <span>Light</span></div>
-            <div class="ts-slide">You Are <span>Enough</span></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-bg-shapes">
+        <span></span><span></span><span></span>
+    </div>
+    
+    <div class="hero-text-container">
+        <div class="hero-slides-wrapper">
+            <!-- Slide 1 -->
+            <div class="hero-slide active" data-index="0">
+                <span class="hero-sub">Welcome, Love ❤️</span>
+                <span class="hero-main">Spiritual Soul</span>
+                <span class="hero-line">🛐 🧿 🔮 ☮️ 🌅</span>
+                <p class="hero-desc">
+                    Sending positive energy to you if you need healing.<br>
+                    I do relationship readings, career readings, finance readings,<br>
+                    future readings, and intuitive guidance.
+                </p>
+                <div class="hero-buttons">
+                    <a href="readings.html" class="btn-hero-primary"><i class="fas fa-hand-sparkles"></i> View Readings</a>
+                    <a href="booking.html" class="btn-hero-secondary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="hero-slide" data-index="1">
+                <span class="hero-sub">✨ Find Your Path</span>
+                <span class="hero-main">Divine Guidance</span>
+                <span class="hero-line">🌟 🌙 ☀️ 🌿</span>
+                <p class="hero-desc">
+                    Let the universe speak through me.<br>
+                    Discover clarity, purpose, and healing on your journey.
+                </p>
+                <div class="hero-buttons">
+                    <a href="readings.html" class="btn-hero-primary"><i class="fas fa-hand-sparkles"></i> Explore Readings</a>
+                    <a href="booking.html" class="btn-hero-secondary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="hero-slide" data-index="2">
+                <span class="hero-sub">💫 Trust the Process</span>
+                <span class="hero-main">Spiritual Awakening</span>
+                <span class="hero-line">🌈 ✨ 🌊 🔥</span>
+                <p class="hero-desc">
+                    Every reading is unique, personal, and guided by Spirit.<br>
+                    Let me help you connect with your higher self.
+                </p>
+                <div class="hero-buttons">
+                    <a href="about.html" class="btn-hero-about"><i class="fas fa-star"></i> About Me</a>
+                    <a href="booking.html" class="btn-hero-secondary"><i class="fas fa-calendar-check"></i> Book Now</a>
+                </div>
+            </div>
         </div>
         
-        <p class="subtitle">
-            Sending positive energy to you if you need healing. I do relationship readings, 
-            career readings, finance readings, future readings, and intuitive guidance.
-        </p>
-        <div class="hero-buttons">
-            <a href="booking.html" class="btn-primary"><i class="fas fa-hand-sparkles"></i> Book Reading</a>
-            <a href="readings.html" class="btn-secondary"><i class="fas fa-arrow-right"></i> View Readings</a>
+        <!-- Hero Dots -->
+        <div class="hero-dots">
+            <button class="hero-dot active" onclick="changeHeroSlide(0)"></button>
+            <button class="hero-dot" onclick="changeHeroSlide(1)"></button>
+            <button class="hero-dot" onclick="changeHeroSlide(2)"></button>
         </div>
     </div>
-    <div class="hero-image">
-        <div class="slideshow-container">
-            <div class="slide slide-1 active">
-                <span class="slide-icon">🕊️</span>
-                <h3>Trust the Journey</h3>
-                <p>Everything unfolds exactly when it should</p>
-            </div>
-            <div class="slide slide-2">
-                <span class="slide-icon">🌟</span>
-                <h3>You Are Never Alone</h3>
-                <p>The universe always has your back</p>
-            </div>
-            <div class="slide slide-3">
-                <span class="slide-icon">💖</span>
-                <h3>Follow Your Heart</h3>
-                <p>Your intuition is your greatest guide</p>
-            </div>
-            <div class="slide slide-4">
-                <span class="slide-icon">🌅</span>
-                <h3>Healing Is Coming</h3>
-                <p>Be gentle with yourself, love</p>
-            </div>
-            <div class="slide-dots">
-                <button class="slide-dot active" onclick="currentSlide(0)"></button>
-                <button class="slide-dot" onclick="currentSlide(1)"></button>
-                <button class="slide-dot" onclick="currentSlide(2)"></button>
-                <button class="slide-dot" onclick="currentSlide(3)"></button>
-            </div>
+</section>
+
+<!-- ===== BOTTOM SLIDESHOW ===== -->
+<section class="bottom-slideshow">
+    <span class="section-label">💬 Words of Wisdom</span>
+    <h2>Messages from the Heart ❤️</h2>
+    <p class="sub">Words to inspire, heal, and guide you on your journey</p>
+
+    <div class="bottom-slide-container">
+        <div class="bottom-slide active" data-index="0">
+            <span class="bs-icon">🕊️</span>
+            <div class="bs-text">"Trust the timing of your life. Everything unfolds exactly when it should."</div>
+            <div class="bs-sub">— Spiritual Guidance</div>
         </div>
+        <div class="bottom-slide" data-index="1">
+            <span class="bs-icon">🌟</span>
+            <div class="bs-text">"Your energy speaks louder than your words. Protect your peace, love."</div>
+            <div class="bs-sub">— Energy Healing</div>
+        </div>
+        <div class="bottom-slide" data-index="2">
+            <span class="bs-icon">💖</span>
+            <div class="bs-text">"The universe always has your back. Trust the signs, follow your heart."</div>
+            <div class="bs-sub">— Divine Guidance</div>
+        </div>
+        <div class="bottom-slide" data-index="3">
+            <span class="bs-icon">🌅</span>
+            <div class="bs-text">"Healing is not linear. Be gentle with yourself, love. You are exactly where you need to be."</div>
+            <div class="bs-sub">— Healing Journey</div>
+        </div>
+        <div class="bottom-slide" data-index="4">
+            <span class="bs-icon">🔮</span>
+            <div class="bs-text">"Sending positive energy to you if you need healing. You are never alone."</div>
+            <div class="bs-sub">— Spiritual Soul ❤️</div>
+        </div>
+    </div>
+
+    <div class="bottom-dots">
+        <button class="bottom-dot active" onclick="changeBottomSlide(0)"></button>
+        <button class="bottom-dot" onclick="changeBottomSlide(1)"></button>
+        <button class="bottom-dot" onclick="changeBottomSlide(2)"></button>
+        <button class="bottom-dot" onclick="changeBottomSlide(3)"></button>
+        <button class="bottom-dot" onclick="changeBottomSlide(4)"></button>
+    </div>
+
+    <div class="bottom-arrows">
+        <button class="bottom-arrow" onclick="changeBottomSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="bottom-arrow" onclick="changeBottomSlide(1)"><i class="fas fa-chevron-right"></i></button>
     </div>
 </section>
 
@@ -701,7 +374,7 @@
     </div>
 </section>
 
-<!-- ===== QR CODE ===== -->
+<!-- ===== QR CODE SECTION ===== -->
 <section class="qr-section">
     <div class="qr-box">
         <h4>📱 Scan to Visit</h4>
@@ -745,8 +418,8 @@
         </div>
         <div class="footer-contact">
             <h4>Contact</h4>
-            <a href="https://wa.me/13528287004"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="https://t.me/ethe_medium"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://wa.me/13026024538"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://t.me/spiritualsoul1"><i class="fab fa-telegram"></i> Telegram</a>
             <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </div>
@@ -755,73 +428,81 @@
     </div>
 </footer>
 
+<!-- ============================================================ -->
+<!-- ===== SCRIPTS ===== -->
+<!-- ============================================================ -->
 <script>
-    // ===== TEXT SLIDESHOW - SLIDE EFFECT =====
-    let textIndex = 0;
-    const textSlides = document.querySelectorAll('.ts-slide');
-    let textTimer;
-    let isAnimating = false;
-
-    function nextTextSlide() {
-        if (isAnimating) return;
-        isAnimating = true;
-        
-        const current = textSlides[textIndex];
-        const nextIndex = (textIndex + 1) % textSlides.length;
-        const next = textSlides[nextIndex];
-        
-        // Current slides out to left
-        current.classList.remove('active');
-        current.classList.add('exit');
-        
-        // Next slides in from right
-        next.classList.add('enter');
-        next.classList.add('active');
-        
-        setTimeout(() => {
-            current.classList.remove('exit');
-            next.classList.remove('enter');
-            isAnimating = false;
-        }, 800);
-        
-        textIndex = nextIndex;
+    // ===== HERO SLIDESHOW =====
+    let heroIndex = 0, heroTimer, isHeroAnimating = false;
+    function changeHeroSlide(index) {
+        if (isHeroAnimating) return;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        if (typeof index === 'number' && index >= 0 && index < slides.length) {
+            animateHeroSlide(heroIndex, index);
+            heroIndex = index;
+        }
+        dots.forEach((d, i) => d.classList.toggle('active', i === heroIndex));
+        resetHeroTimer();
     }
-
-    // ===== IMAGE SLIDESHOW =====
-    let slideIndex = 0;
-    let slideTimer;
-
-    function showSlide(n) {
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.slide-dot');
-        if (n >= slides.length) slideIndex = 0;
-        if (n < 0) slideIndex = slides.length - 1;
-        slides.forEach((s, i) => s.classList.toggle('active', i === slideIndex));
-        dots.forEach((d, i) => d.classList.toggle('active', i === slideIndex));
+    function animateHeroSlide(oldIndex, newIndex) {
+        const slides = document.querySelectorAll('.hero-slide');
+        const oldSlide = slides[oldIndex];
+        const newSlide = slides[newIndex];
+        isHeroAnimating = true;
+        slides.forEach(s => s.classList.remove('active', 'exit-left', 'enter-right'));
+        oldSlide.classList.add('exit-left');
+        newSlide.classList.add('enter-right');
+        void newSlide.offsetWidth;
+        newSlide.classList.remove('enter-right');
+        newSlide.classList.add('active');
+        setTimeout(() => { oldSlide.classList.remove('exit-left'); isHeroAnimating = false; }, 800);
     }
+    function nextHeroSlide() { const slides = document.querySelectorAll('.hero-slide'); changeHeroSlide((heroIndex + 1) % slides.length); }
+    function resetHeroTimer() { clearInterval(heroTimer); heroTimer = setInterval(nextHeroSlide, 6000); }
 
-    function currentSlide(n) { slideIndex = n; showSlide(slideIndex); resetTimer(); }
-    function nextSlide() { slideIndex++; showSlide(slideIndex); resetTimer(); }
-    function resetTimer() { clearInterval(slideTimer); slideTimer = setInterval(nextSlide, 5000); }
+    // ===== BOTTOM SLIDESHOW =====
+    let bottomIndex = 0, bottomTimer, isBottomAnimating = false;
+    function changeBottomSlide(index) {
+        if (isBottomAnimating) return;
+        const slides = document.querySelectorAll('.bottom-slide');
+        const dots = document.querySelectorAll('.bottom-dot');
+        let targetIndex;
+        if (typeof index === 'number' && index >= 0 && index < slides.length) targetIndex = index;
+        else if (index === -1) targetIndex = (bottomIndex - 1 + slides.length) % slides.length;
+        else if (index === 1) targetIndex = (bottomIndex + 1) % slides.length;
+        else return;
+        animateBottomSlide(bottomIndex, targetIndex);
+        bottomIndex = targetIndex;
+        dots.forEach((d, i) => d.classList.toggle('active', i === bottomIndex));
+        resetBottomTimer();
+    }
+    function animateBottomSlide(oldIndex, newIndex) {
+        const slides = document.querySelectorAll('.bottom-slide');
+        const oldSlide = slides[oldIndex];
+        const newSlide = slides[newIndex];
+        isBottomAnimating = true;
+        slides.forEach(s => s.classList.remove('active', 'exit-left', 'enter-right'));
+        oldSlide.classList.add('exit-left');
+        newSlide.classList.add('enter-right');
+        void newSlide.offsetWidth;
+        newSlide.classList.remove('enter-right');
+        newSlide.classList.add('active');
+        setTimeout(() => { oldSlide.classList.remove('exit-left'); isBottomAnimating = false; }, 700);
+    }
+    function nextBottomSlide() { const slides = document.querySelectorAll('.bottom-slide'); changeBottomSlide((bottomIndex + 1) % slides.length); }
+    function resetBottomTimer() { clearInterval(bottomTimer); bottomTimer = setInterval(nextBottomSlide, 5000); }
 
+    // ===== TOGGLE MENU =====
     function toggleMenu() {
         document.querySelector('.nav-links').classList.toggle('show');
         document.querySelector('.hamburger').classList.toggle('active');
     }
 
     // ===== START SLIDESHOWS =====
-    // Set initial active state
-    textSlides.forEach((s, i) => {
-        if (i === 0) {
-            s.classList.add('active');
-        } else {
-            s.classList.add('enter');
-        }
-    });
-
-    showSlide(0);
-    slideTimer = setInterval(nextSlide, 5000);
-    textTimer = setInterval(nextTextSlide, 3500);
+    resetHeroTimer();
+    resetBottomTimer();
+    console.log('🔮 Spiritual Soul Homepage is ready, love! ❤️🛐🧿🔮☮️🌅');
 </script>
 </body>
 </html>
