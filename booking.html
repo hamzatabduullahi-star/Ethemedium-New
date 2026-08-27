@@ -749,7 +749,7 @@
         <div class="footer-contact">
             <h4>Contact</h4>
             <a href="https://wa.me/13026024538"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="https://t.me/+13026024538"><i class="fab fa-telegram"></i> Telegram</a>
+            <a href="https://t.me/spiritualsoul1"><i class="fab fa-telegram"></i> Telegram</a>
             <a href="mailto:spiritualsoul@gmail.com"><i class="fas fa-envelope"></i> Email</a>
         </div>
     </div>
@@ -815,7 +815,7 @@
 
     // 🔴 YOUR CONTACT INFO
     const WHATSAPP_NUMBER = '13026024538';
-    const TELEGRAM_NUMBER = '13026024538'; // Same number for Telegram
+    const TELEGRAM_USERNAME = 'spiritualsoul1'; // Without @
 
     // ============================================
     // DOM REFS
@@ -1057,7 +1057,7 @@ ${paymentInfo}
         if (platform === 'whatsapp') {
             url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
         } else if (platform === 'telegram') {
-            url = `https://t.me/+${TELEGRAM_NUMBER}?text=${encoded}`;
+            url = `https://t.me/${TELEGRAM_USERNAME}?text=${encoded}`;
         }
         window.open(url, '_blank');
         showToast(`✨ Opening ${platform.charAt(0).toUpperCase() + platform.slice(1)}... Sending love! ❤️`);
@@ -1121,7 +1121,7 @@ ${paymentInfo}
         console.log('💳 9 Payment Methods Available');
         console.log('📦 Crystal cart linked from crystal.html');
         console.log('📱 WhatsApp: +1 302 602 4538');
-        console.log('📱 Telegram: +1 302 602 4538');
+        console.log('📱 Telegram: @spiritualsoul1');
     }
 
     if (document.readyState === 'loading') {
